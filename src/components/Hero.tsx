@@ -1,7 +1,7 @@
 import type { ComponentType } from "react";
 import type { LucideProps } from "lucide-react";
 import { Github, Linkedin, Mail } from "lucide-react";
-import { ArrowFatLinesDown } from "@phosphor-icons/react";
+import { CaretDoubleDown } from "@phosphor-icons/react";
 
 type SocialLink = {
   label: string;
@@ -188,13 +188,13 @@ export default function Hero() {
       >
         {/* Hero Text */}
         <div className="w-full">
-          <h2 className="text-pretty text-xl sm:text-2xl md:text-5xl font-bold tracking-tight text-gray-700 animate-fade-in">
+          <h2 className="text-pretty text-xl sm:text-2xl md:text-6xl font-bold tracking-tight text-gray-700 animate-fade-in">
             Hello! 👋
           </h2>
-          <h1 className="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200">
+          <h1 className="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200">
             I&apos;m <span style={{ color: accentColor }}>Dev Shah</span>
           </h1>
-          <p className="mt-4 sm:mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-xl font-medium text-gray-600 animate-fade-in animation-delay-400">
+          <p className="mt-4 sm:mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-2xl font-medium text-gray-600 animate-fade-in animation-delay-400">
             Software Engineer
           </p>
         </div>
@@ -226,9 +226,8 @@ export default function Hero() {
         aria-label="Scroll to About"
         className="group absolute bottom-60 left-1/2 z-10 -translate-x-1/2 rounded-full bg-white/90 p-3 shadow-[0_14px_30px_rgba(0,0,0,0.14)] ring-1 ring-black/5 backdrop-blur transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
       >
-        <ArrowFatLinesDown
+        <CaretDoubleDown
           size={28}
-          weight="fill"
           className="text-gray-700 transition group-hover:text-blue-600 animate-arrow-float"
         />
       </a>

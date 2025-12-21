@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import About from "./components/About";
 
 function App() {
   return (
@@ -12,12 +13,7 @@ function App() {
       <main className="mx-auto max-w-[1280px] px-4 py-24">
         <Hero />
 
-        <section id="about" className="scroll-mt-24 py-10">
-          <h2 className="text-2xl font-semibold tracking-tight">About</h2>
-          <p className="mt-4 leading-7 text-zinc-700 dark:text-zinc-300">
-            Write a short summary about yourself here.
-          </p>
-        </section>
+        <About />
 
         <section id="projects" className="scroll-mt-24 py-10">
           <h2 className="text-2xl font-semibold tracking-tight">Projects</h2>
