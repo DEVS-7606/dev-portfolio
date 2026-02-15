@@ -10,4 +10,16 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          icons: ["@phosphor-icons/react", "lucide-react", "react-icons"],
+        },
+      },
+    },
+    minify: "terser",
+    sourcemap: false,
+  },
 });
