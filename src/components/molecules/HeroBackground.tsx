@@ -3,18 +3,26 @@ import { ACCENT_COLOR, SVG_CONFIG, PROGRAMMING_SYMBOLS } from "@/shared/constant
 export default function HeroBackground() {
   return (
     <>
-      {/* Gradient overlay */}
+      {/* Gradient overlay - Light mode */}
       <div
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 -z-10 dark:hidden"
         style={{
           background: `radial-gradient(ellipse 1000px 1400px at 0% 0%, ${ACCENT_COLOR}60 0%, ${ACCENT_COLOR}40 15%, ${ACCENT_COLOR}20 35%, rgba(255, 255, 255, 0.4) 65%, rgba(255, 255, 255, 0.9) 85%, white 100%)`,
+        }}
+      />
+
+      {/* Gradient overlay - Dark mode */}
+      <div
+        className="absolute inset-0 -z-10 hidden dark:block"
+        style={{
+          background: `radial-gradient(ellipse 1000px 1400px at 0% 0%, ${ACCENT_COLOR}40 0%, ${ACCENT_COLOR}30 15%, ${ACCENT_COLOR}15 35%, rgba(9, 9, 11, 0.6) 65%, rgba(9, 9, 11, 0.9) 85%, rgb(9, 9, 11) 100%)`,
         }}
       />
 
       {/* SVG Background */}
       <svg
         aria-hidden="true"
-        className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+        className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 dark:stroke-gray-800 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
       >
         <defs>
           <pattern
