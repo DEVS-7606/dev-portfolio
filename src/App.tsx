@@ -1,6 +1,7 @@
 import Header from "@/components/organisms/Header";
 import Hero from "@/components/organisms/Hero";
 import About from "@/components/organisms/About";
+import Experience from "@/components/organisms/Experience";
 import Education from "@/components/organisms/Education";
 
 function App() {
@@ -16,21 +17,16 @@ function App() {
 
         <About />
 
+        <Experience />
+
+        <Education />
+
         <section id="projects" className="scroll-mt-24 py-10">
           <h2 className="text-2xl font-semibold tracking-tight">Projects</h2>
           <p className="mt-4 leading-7 text-zinc-700 dark:text-zinc-300">
             We&apos;ll add your projects here next.
           </p>
         </section>
-
-        <section id="experience" className="scroll-mt-24 py-10">
-          <h2 className="text-2xl font-semibold tracking-tight">Experience</h2>
-          <p className="mt-4 leading-7 text-zinc-700 dark:text-zinc-300">
-            We&apos;ll add your experience here next.
-          </p>
-        </section>
-
-        <Education />
       </main>
     </div>
   );
