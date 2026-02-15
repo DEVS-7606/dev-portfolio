@@ -1,6 +1,7 @@
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import About from "./components/About";
+import Header from "@/components/organisms/Header";
+import Hero from "@/components/organisms/Hero";
+import About from "@/components/organisms/About";
+import Education from "@/components/organisms/Education";
 
 function App() {
   return (
@@ -29,12 +30,7 @@ function App() {
           </p>
         </section>
 
-        <section id="education" className="scroll-mt-24 py-10">
-          <h2 className="text-2xl font-semibold tracking-tight">Education</h2>
-          <p className="mt-4 leading-7 text-zinc-700 dark:text-zinc-300">
-            We&apos;ll add your education here next.
-          </p>
-        </section>
+        <Education />
       </main>
     </div>
   );

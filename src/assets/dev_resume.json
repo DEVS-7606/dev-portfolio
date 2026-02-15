@@ -1,0 +1,77 @@
+{
+  "basics": {
+    "name": "Dev Shah",
+    "label": "Software Engineer",
+    "phone": "+919974067622",
+    "email": "devs95471@gmail.com",
+    "linkedin": "https://linkedin.com/in/dev-shah"
+  },
+  "objective": "Contribute as a software engineer by delivering reliable, scalable, and maintainable web applications leveraging strong frontend skills, clean code practices, and a collaborative mindset—to improve user experience, solve real‑world problems, and advance business goals through continuous learning and best practices.",
+  "experience": [
+    {
+      "title": "Frontend Developer",
+      "company": "Avesta Technologies",
+      "start": "2023-11",
+      "end": null,
+      "summary": "Learn how to develop and deploy real-world projects and add value; learn performance optimization, SEO, how tests should be written; clean code, layered architecture, atomic design."
+    },
+    {
+      "title": "Intern",
+      "company": "Avesta Technologies",
+      "start": "2023-02",
+      "end": "2023-11",
+      "summary": "Learned fundamentals of JavaScript; learned React and Next.js; made projects using CRUD operations."
+    },
+    {
+      "title": "Summer Intern (15 days)",
+      "company": "Karbh IT Solutions / Karbh IT",
+      "start": "2022-07-01",
+      "end": "2022-07-15",
+      "summary": "Worked with web development, backend programming, and database management."
+    }
+  ],
+  "education": [
+    {
+      "institution": "LJIET",
+      "studyType": "B.E",
+      "area": "Electronics and Communication",
+      "startYear": 2019,
+      "endYear": 2023,
+      "gpa": 8.67,
+      "gpaNote": "Till 6th semester"
+    },
+    {
+      "institution": "Divine Life School",
+      "studyType": "HSC (12th)",
+      "endYear": 2019,
+      "percentage": 52
+    },
+    {
+      "institution": "Divine Life School",
+      "studyType": "SSC (10th)",
+      "endYear": 2017,
+      "percentage": 73.17
+    }
+  ],
+  "skills": {
+    "technical": {
+      "frontend": [
+        "HTML",
+        "JavaScript (React, Next.js)",
+        "CSS (Bootstrap, Material UI, Tailwind CSS)",
+        "TypeScript"
+      ],
+      "backend": ["MySQL", "Node.js", "Express.js"]
+    },
+    "soft": [
+      "Leadership",
+      "Hard-Working",
+      "Flexible",
+      "Persistance",
+      "Creative & Critical Thinking",
+      "Problem Solving",
+      "Communication",
+      "Collabrative"
+    ]
+  }
+}
