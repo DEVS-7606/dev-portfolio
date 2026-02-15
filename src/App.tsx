@@ -13,7 +13,7 @@ function App() {
     <div className="min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
       <Header />
 
-      <main className="mx-auto max-w-[1280px] px-4 py-24">
+      <main className="mx-auto max-w-[1280px] px-4 sm:px-6 md:px-8 lg:px-12 py-16 sm:py-20 md:py-24">
         <Hero />
 
         <About />
@@ -22,9 +22,11 @@ function App() {
 
         <Education />
 
-        <section id="projects" className="scroll-mt-24 py-10">
-          <h2 className="text-2xl font-semibold tracking-tight">Projects</h2>
-          <p className="mt-4 leading-7 text-zinc-700 dark:text-zinc-300">
+        <section id="projects" className="scroll-mt-24 py-8 sm:py-10 md:py-12">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight">
+            Projects
+          </h2>
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base leading-7 text-zinc-700 dark:text-zinc-300">
             We&apos;ll add your projects here next.
           </p>
         </section>

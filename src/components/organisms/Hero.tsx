@@ -6,7 +6,7 @@ import { ANIMATION_DELAYS } from "@/shared/constants";
 export default function Hero() {
   return (
     <section
-      className="relative isolate overflow-hidden bg-white py-24 md:h-screen"
+      className="relative isolate overflow-hidden bg-white py-16 sm:py-20 md:py-24 md:h-screen"
       data-hero-section
       id="hero"
     >
@@ -14,8 +14,8 @@ export default function Hero() {
 
       {/* Content Container */}
       <div
-        className="relative flex gap-6 h-full w-full
-       flex-col items-start justify-normal px-8 sm:px-12 md:px-24"
+        className="relative flex gap-4 sm:gap-6 h-full w-full
+       flex-col items-start justify-normal px-4 sm:px-8 md:px-12 lg:px-24"
       >
         {/* Hero Text */}
         <div className="w-full">

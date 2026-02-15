@@ -36,7 +36,7 @@ export const EducationCard = ({ education, index }: EducationCardProps) => {
     >
       {/* Glow Effect */}
       <div
-        className="absolute -inset-1 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl"
+        className="absolute -inset-1 rounded-xl sm:rounded-2xl lg:rounded-[2rem] opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl"
         style={{
           background: isMain
             ? `linear-gradient(135deg, ${colors.accent}60, #1e40af60)`
@@ -46,7 +46,7 @@ export const EducationCard = ({ education, index }: EducationCardProps) => {
 
       {/* Card Container */}
       <div
-        className="relative rounded-[2rem] overflow-hidden h-full"
+        className="relative rounded-xl sm:rounded-2xl lg:rounded-[2rem] overflow-hidden h-full"
         style={{
           boxShadow: isMain
             ? "0 10px 40px rgba(0, 0, 0, 0.15)"
@@ -59,7 +59,7 @@ export const EducationCard = ({ education, index }: EducationCardProps) => {
 
         {/* Content */}
         <div
-          className={`relative p-6 lg:p-8 h-full flex flex-col ${isMain ? "text-white" : ""}`}
+          className={`relative p-4 sm:p-5 md:p-6 lg:p-8 md:h-full flex flex-col ${isMain ? "text-white" : ""}`}
         >
           <CardHeader
             isMain={isMain}
@@ -143,7 +143,7 @@ const CardBorder = ({
   colors: CardColors;
 }) => (
   <div
-    className={`absolute inset-0 rounded-[2rem] pointer-events-none transition-all duration-500 ${
+    className={`absolute inset-0 rounded-xl sm:rounded-2xl lg:rounded-[2rem] pointer-events-none transition-all duration-500 ${
       isMain
         ? "ring-1 ring-inset ring-white/20"
         : "ring-2 ring-inset group-hover:ring-[3px]"
@@ -161,7 +161,7 @@ const CardBorder = ({
 
 const HoverShadow = ({ colors }: { colors: CardColors }) => (
   <div
-    className="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+    className="absolute inset-0 rounded-xl sm:rounded-2xl lg:rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
     style={{
       boxShadow: `0 20px 40px ${colors.accent}20, 0 10px 20px ${colors.accent}15`,
     }}
@@ -184,8 +184,8 @@ const CardTitle = ({
       variant="heading"
       className={`mb-2 transition-all duration-300 ${
         isMain
-          ? "text-3xl lg:text-4xl text-white"
-          : "text-2xl lg:text-3xl text-zinc-900 dark:text-zinc-100"
+          ? "text-2xl sm:text-3xl lg:text-4xl text-white"
+          : "text-xl sm:text-2xl lg:text-3xl text-zinc-900 dark:text-zinc-100"
       }`}
       color={!isMain ? colors.accent : undefined}
     >
@@ -193,18 +193,18 @@ const CardTitle = ({
     </Text>
 
     <div
-      className={`flex items-center gap-2 text-base font-semibold mb-auto ${
+      className={`flex items-center gap-2 text-sm sm:text-base font-semibold mb-auto ${
         isMain ? "text-white/90" : "text-zinc-600 dark:text-zinc-400"
       }`}
     >
-      <Icon type="building" className="w-4 h-4" />
+      <Icon type="building" className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
       {institution}
     </div>
   </>
 );
 
 const AchievementsList = ({ achievements }: { achievements: string[] }) => (
-  <div className="space-y-2.5 mt-6 pt-6 border-t border-white/20">
+  <div className="space-y-2 sm:space-y-2.5 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/20">
     {achievements.map((achievement, index) => (
       <AchievementItem key={index}>{achievement}</AchievementItem>
     ))}
