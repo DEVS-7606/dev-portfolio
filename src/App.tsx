@@ -3,13 +3,14 @@ import Hero from "@/components/organisms/Hero";
 import About from "@/components/organisms/About";
 import Experience from "@/components/organisms/Experience";
 import Education from "@/components/organisms/Education";
+import { useScrollSpy } from "@/hooks/useScrollSpy";
 
 function App() {
+  // Initialize scroll spy to update URL as user scrolls
+  useScrollSpy();
+
   return (
-    <div
-      id="top"
-      className="min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100"
-    >
+    <div className="min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
       <Header />
 
       <main className="mx-auto max-w-[1280px] px-4 py-24">

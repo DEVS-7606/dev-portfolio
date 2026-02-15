@@ -5,7 +5,11 @@ import { ANIMATION_DELAYS } from "@/shared/constants";
 
 export default function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-white py-24 md:h-screen">
+    <section
+      className="relative isolate overflow-hidden bg-white py-24 md:h-screen"
+      data-hero-section
+      id="hero"
+    >
       <HeroBackground />
 
       {/* Content Container */}
