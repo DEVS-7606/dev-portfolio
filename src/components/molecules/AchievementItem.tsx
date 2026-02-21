@@ -9,7 +9,7 @@ interface AchievementItemProps {
 
 export const AchievementItem = ({ children, colors }: AchievementItemProps) => (
   <div
-    className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm font-medium rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 border transition-all duration-300 hover:translate-x-1"
+    className="flex items-center gap-2 text-xs sm:text-sm font-medium rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 border transition-all duration-300 hover:translate-x-1"
     style={{
       backgroundColor: colors.soft,
       borderColor: colors.accent + "20",
@@ -17,7 +17,7 @@ export const AchievementItem = ({ children, colors }: AchievementItemProps) => (
   >
     <Icon
       type="check"
-      className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0"
+      className="w-3 h-3 flex-shrink-0"
       color={colors.accent}
     />
     <Text
