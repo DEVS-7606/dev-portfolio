@@ -19,30 +19,26 @@ export const CardHeader = ({
   <div className="flex items-start justify-between mb-3 sm:mb-4">
     <div className="flex items-center gap-2 sm:gap-3">
       <div
-        className={`p-2 sm:p-2.5 md:p-3 rounded-xl sm:rounded-2xl transition-all duration-500 ${
-          isMain
-            ? "bg-white/20 backdrop-blur-sm"
-            : "bg-zinc-100 dark:bg-zinc-800 group-hover:scale-110"
-        }`}
-        style={!isMain ? { boxShadow: `0 4px 12px ${colors.accent}20` } : {}}
+        className="p-2 sm:p-2.5 md:p-3 rounded-xl sm:rounded-2xl transition-all duration-500 bg-zinc-100 dark:bg-zinc-800 group-hover:scale-110"
+        style={{ boxShadow: `0 4px 12px ${colors.accent}20` }}
       >
         <Icon
           type={isMain ? "graduation" : "book"}
-          color={isMain ? "white" : colors.accent}
+          color={colors.accent}
         />
       </div>
 
       <div>
         <Text
           variant="label"
-          className={`${isMain ? "text-white/70" : "text-zinc-500 dark:text-zinc-400"} mb-1`}
+          className="text-zinc-500 dark:text-zinc-400 mb-1"
         >
           {label}
         </Text>
 
         <Badge
-          variant={isMain ? "primary" : "secondary"}
-          color={!isMain ? colors.accent : undefined}
+          variant="secondary"
+          color={colors.accent}
         >
           {period}
         </Badge>

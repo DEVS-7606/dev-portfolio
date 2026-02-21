@@ -38,28 +38,21 @@ export const EducationCard = ({ education, index }: EducationCardProps) => {
       <div
         className="absolute -inset-1 rounded-xl sm:rounded-2xl lg:rounded-[2rem] opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl"
         style={{
-          background: isMain
-            ? `linear-gradient(135deg, ${colors.accent}60, #1e40af60)`
-            : `${colors.accent}40`,
+          background: `${colors.accent}40`,
         }}
       />
 
       {/* Card Container */}
       <div
-        className="relative rounded-xl sm:rounded-2xl lg:rounded-[2rem] overflow-hidden h-full"
-        style={{
-          boxShadow: isMain
-            ? "0 10px 40px rgba(0, 0, 0, 0.15)"
-            : "0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1)",
-        }}
+        className="relative rounded-xl sm:rounded-2xl lg:rounded-[2rem] overflow-hidden h-full shadow-[0_4px_20px_rgba(0,0,0,0.08),0_1px_3px_rgba(0,0,0,0.1)]"
       >
-        <CardBackground isMain={isMain} colors={colors} />
-        <CardBorder isMain={isMain} colors={colors} />
-        {!isMain && <HoverShadow colors={colors} />}
+        <CardBackground colors={colors} />
+        <CardBorder colors={colors} />
+        <HoverShadow colors={colors} />
 
         {/* Content */}
         <div
-          className={`relative p-4 sm:p-5 md:p-6 lg:p-8 md:h-full flex flex-col ${isMain ? "text-white" : ""}`}
+          className={`relative p-4 sm:p-5 md:p-6 lg:p-8 md:h-full flex flex-col`}
         >
           <CardHeader
             isMain={isMain}
@@ -77,7 +70,6 @@ export const EducationCard = ({ education, index }: EducationCardProps) => {
 
           {scoreValue && (
             <ScoreDisplay
-              isMain={isMain}
               colors={colors}
               value={scoreValue}
               label={scoreLabel}
@@ -86,7 +78,7 @@ export const EducationCard = ({ education, index }: EducationCardProps) => {
           )}
 
           {education.achievements && (
-            <AchievementsList achievements={education.achievements} />
+            <AchievementsList achievements={education.achievements} colors={colors} />
           )}
         </div>
       </div>
@@ -96,66 +88,32 @@ export const EducationCard = ({ education, index }: EducationCardProps) => {
 
 // Private Sub-Components
 const CardBackground = ({
-  isMain,
   colors,
 }: {
-  isMain: boolean;
   colors: CardColors;
 }) => (
   <div className="absolute inset-0">
-    {isMain ? (
-      <>
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(135deg, ${colors.accent} 0%, #1e40af 100%)`,
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 20% 20%, rgba(255,255,255,0.8) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(255,255,255,0.5) 0%, transparent 50%)
-            `,
-          }}
-        />
-      </>
-    ) : (
-      <>
-        <div className="absolute inset-0 bg-white dark:bg-zinc-900" />
-        <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-          style={{
-            background: `radial-gradient(circle at 20% 0%, ${colors.accent}12 0%, transparent 60%)`,
-          }}
-        />
-      </>
-    )}
+    <div className="absolute inset-0 bg-white dark:bg-zinc-900" />
+    <div
+      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+      style={{
+        background: `radial-gradient(circle at 20% 0%, ${colors.accent}12 0%, transparent 60%)`,
+      }}
+    />
   </div>
 );
 
 const CardBorder = ({
-  isMain,
   colors,
 }: {
-  isMain: boolean;
   colors: CardColors;
 }) => (
   <div
-    className={`absolute inset-0 rounded-xl sm:rounded-2xl lg:rounded-[2rem] pointer-events-none transition-all duration-500 ${
-      isMain
-        ? "ring-1 ring-inset ring-white/20"
-        : "ring-2 ring-inset group-hover:ring-[3px]"
-    }`}
-    style={
-      !isMain
-        ? ({
-            ringColor: colors.accent + "30",
-            boxShadow: `inset 0 1px 2px rgba(255,255,255,0.5)`,
-          } as React.CSSProperties)
-        : {}
-    }
+    className="absolute inset-0 rounded-xl sm:rounded-2xl lg:rounded-[2rem] pointer-events-none transition-all duration-500 ring-2 ring-inset group-hover:ring-[3px]"
+    style={{
+      ringColor: colors.accent + "30",
+      boxShadow: `inset 0 1px 2px rgba(255,255,255,0.5)`,
+    } as React.CSSProperties}
   />
 );
 
@@ -182,20 +140,17 @@ const CardTitle = ({
   <>
     <Text
       variant="heading"
-      className={`mb-2 transition-all duration-300 ${
-        isMain
-          ? "text-2xl sm:text-3xl lg:text-4xl text-white"
-          : "text-xl sm:text-2xl lg:text-3xl text-zinc-900 dark:text-zinc-100"
-      }`}
-      color={!isMain ? colors.accent : undefined}
+      className={`mb-2 transition-all duration-300 ${isMain
+        ? "text-2xl sm:text-3xl lg:text-4xl"
+        : "text-xl sm:text-2xl lg:text-3xl"
+        } text-zinc-900 dark:text-zinc-100`}
+      color={colors.accent}
     >
       {degree}
     </Text>
 
     <div
-      className={`flex items-center gap-2 text-sm sm:text-base font-semibold mb-auto ${
-        isMain ? "text-white/90" : "text-zinc-600 dark:text-zinc-400"
-      }`}
+      className="flex items-center gap-2 text-sm sm:text-base font-semibold mb-auto text-zinc-600 dark:text-zinc-400"
     >
       <Icon type="building" className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
       {institution}
@@ -203,10 +158,16 @@ const CardTitle = ({
   </>
 );
 
-const AchievementsList = ({ achievements }: { achievements: string[] }) => (
-  <div className="space-y-2 sm:space-y-2.5 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/20">
+const AchievementsList = ({
+  achievements,
+  colors
+}: {
+  achievements: string[],
+  colors: CardColors
+}) => (
+  <div className="space-y-2 sm:space-y-2.5 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-zinc-200 dark:border-zinc-800">
     {achievements.map((achievement, index) => (
-      <AchievementItem key={index}>{achievement}</AchievementItem>
+      <AchievementItem key={index} colors={colors}>{achievement}</AchievementItem>
     ))}
   </div>
 );
