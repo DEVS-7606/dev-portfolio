@@ -5,8 +5,8 @@ type InputFieldProps = {
     label: string;
     type: string;
     placeholder: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    registration: UseFormRegisterReturn<any>;
+    registration: UseFormRegisterReturn<string>;
+
     error?: string;
 };
 

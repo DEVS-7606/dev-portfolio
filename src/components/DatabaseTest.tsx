@@ -1,40 +1,34 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../supabase-client';
+import { supabase } from '@/supabase-client';
 
 export function DatabaseTest() {
   const [status, setStatus] = useState<'testing' | 'success' | 'error'>('testing');
   const [message, setMessage] = useState('Testing connection...');
-  const [details, setDetails] = useState<string[]>([]);
-
-  useEffect(() => {
-    testConnection();
-  }, []);
+  const [details, setDetails] = useState<string[]>(['✓ Supabase client initialized']);
 
   async function testConnection() {
-    const logs: string[] = [];
-    
+    const logs: string[] = ['✓ Supabase client initialized'];
+
     try {
-      logs.push('✓ Supabase client initialized');
-      setDetails([...logs]);
-      
       // Test auth endpoint
       const { error: authError } = await supabase.auth.getSession();
       if (authError) {
         logs.push(`✗ Auth error: ${authError.message}`);
-        setDetails([...logs]);
       } else {
         logs.push('✓ Auth endpoint reachable');
-        setDetails([...logs]);
       }
-      
+      setDetails([...logs]);
+
+
       // Test database query
-      const { data, error } = await supabase.from('contacts').select('count').limit(1);
-      
+      const { data, error } = await supabase.from('users').select('count', { count: 'exact', head: true });
+
+
       if (error) {
-        if (error.message.includes('does not exist') || 
-            error.code === '42P01' || 
-            error.code === 'PGRST205' ||
-            error.message.includes('Could not find the table')) {
+        if (error.message.includes('does not exist') ||
+          error.code === '42P01' ||
+          error.code === 'PGRST205' ||
+          error.message.includes('Could not find the table')) {
           logs.push('✓ Database connected (table "contacts" does not exist yet)');
           setStatus('success');
           setMessage('Database connection successful!');
@@ -55,15 +49,23 @@ export function DatabaseTest() {
         setStatus('success');
         setMessage('Database connection successful!');
       }
-      
-    } catch (err: any) {
-      logs.push(`✗ Error: ${err.message}`);
+
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : String(err);
+      logs.push(`✗ Error: ${errorMessage}`);
       setStatus('error');
       setMessage('Connection test failed');
     }
-    
+
     setDetails(logs);
   }
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      testConnection();
+    }, 0);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   return (
     <div style={{

@@ -5,8 +5,8 @@ type TextareaFieldProps = {
     label: string;
     placeholder: string;
     rows?: number;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    registration: UseFormRegisterReturn<any>;
+    registration: UseFormRegisterReturn<string>;
+
     error?: string;
 };
 
