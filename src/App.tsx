@@ -3,7 +3,9 @@ import Hero from "@/components/organisms/Hero";
 import About from "@/components/organisms/About";
 import Experience from "@/components/organisms/Experience";
 import Education from "@/components/organisms/Education";
+// import Contact from "@/components/organisms/Contact";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
+import { DatabaseTest } from "@/components/DatabaseTest";
 
 function App() {
   // Initialize scroll spy to update URL as user scrolls
@@ -11,6 +13,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+      <DatabaseTest />
       <Header />
 
       <main className="mx-auto max-w-[1280px] px-4 sm:px-6 md:px-8 lg:px-12 py-16 sm:py-20 md:py-24">
@@ -30,6 +33,8 @@ function App() {
             We&apos;ll add your projects here next.
           </p>
         </section>
+
+        {/* <Contact /> */}
       </main>
     </div>
   );
