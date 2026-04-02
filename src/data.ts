@@ -3,7 +3,7 @@ import {
   FaCss3Alt,
   FaJs,
   FaReact,
-  //   FaNodeJs,
+  FaNodeJs,
   FaBootstrap,
 } from "react-icons/fa";
 import {
@@ -11,12 +11,13 @@ import {
   SiMaterialdesign,
   SiTypescript,
   SiNextdotjs,
-  //   SiExpress,
-  //   SiMysql,
+  SiExpress,
+  SiMysql,
 } from "react-icons/si";
 
 export const aboutMe =
-  "Contribute as a software engineer by delivering reliable, scalable, and maintainable web applications leveraging strong frontend skills, clean code practices, and a collaborative mindset—to improve user experience, solve real-world problems, and advance business goals through continuous learning and best practices.";
+  // "Contribute as a software engineer by delivering reliable, scalable, and maintainable web applications leveraging strong frontend skills, clean code practices, and a collaborative mindset—to improve user experience, solve real-world problems, and advance business goals through continuous learning and best practices.";
+  "“Frontend‑focused Software Engineer building B2C web experiences and internal dashboards with React, Next.js, TypeScript, Tailwind, and Supabase. I integrate REST APIs (including RBAC‑based admin tools) and I’m expanding into full‑stack development through personal projects using Node.js/Express and PostgreSQL.”";
 
 export const skills = [
   { name: "HTML", icon: FaHtml5 },
@@ -28,7 +29,7 @@ export const skills = [
   { name: "TypeScript", icon: SiTypescript },
   { name: "React", icon: FaReact },
   { name: "NextJs", icon: SiNextdotjs },
-  // { name: "NodeJs", icon: FaNodeJs },
-  // { name: "ExpressJs", icon: SiExpress },
-  // { name: "MySql", icon: SiMysql },
+  { name: "NodeJs", icon: FaNodeJs },
+  { name: "ExpressJs", icon: SiExpress },
+  { name: "MySql", icon: SiMysql },
 ];

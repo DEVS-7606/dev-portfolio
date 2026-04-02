@@ -17,7 +17,7 @@ const About = () => {
 
         {/* About Me Content */}
         <div className="prose prose-zinc dark:prose-invert max-w-none">
-          <p className="text-base sm:text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+          <p className="text-base sm:text-lg italic leading-relaxed text-zinc-600 dark:text-zinc-400">
             {aboutMe}
           </p>
         </div>

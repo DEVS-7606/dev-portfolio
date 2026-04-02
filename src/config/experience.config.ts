@@ -11,7 +11,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     start: "2023-11",
     end: null,
     summary:
-      "Develop and deploy real-world projects with focus on performance optimization; Implement SEO best practices and testing strategies; Apply clean code principles and layered architecture; Utilize atomic design patterns for scalable UI components.",
+      "Work on a B2B greenfield admin panel project for machine onboarding and monitoring jobs, shifts, and production with dashboards and filters; Integrate role‑based (RBAC) logic to provide different views and actions for admins and client users while keeping UI logic simple and maintainable; Develop and deploy real‑world projects with a focus on performance optimization; Implement SEO best practices and testing strategies for B2C websites; Apply clean code principles and layered architecture; Utilize atomic design patterns for scalable UI components with clear layouts and easy navigation for internal users",
   },
   {
     title: "Intern",
