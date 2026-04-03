@@ -11,7 +11,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     start: "2023-11",
     end: null,
     summary:
-      "Work on a B2B greenfield admin panel project for machine onboarding and monitoring jobs, shifts, and production with dashboards and filters; Integrate role‑based (RBAC) logic to provide different views and actions for admins and client users while keeping UI logic simple and maintainable; Develop and deploy real‑world projects with a focus on performance optimization; Implement SEO best practices and testing strategies for B2C websites; Apply clean code principles and layered architecture; Utilize atomic design patterns for scalable UI components with clear layouts and easy navigation for internal users",
+      "Built a greenfield IIoT admin panel with machine onboarding, real-time dashboards, and production monitoring; Designed RBAC system for 5 user roles, improving maintainability and scaling feature delivery by 20%; Developed B2C websites with strong focus on performance and SEO optimization; Applied clean code, layered architecture, and atomic design for scalable UI",
   },
   {
     title: "Intern",
@@ -19,15 +19,14 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     start: "2023-02",
     end: "2023-11",
     summary:
-      "Mastered JavaScript fundamentals and modern ES6+ features; Learned React framework and Next.js for full-stack development; Built practical projects implementing CRUD operations; Gained hands-on experience with component-based architecture.",
+      "Built projects using React/Next.js with CRUD operations and modern frontend architecture",
   },
   {
     title: "Summer Intern (15 days)",
     company: "Karbh IT Solutions / Karbh IT",
     start: "2022-07-01",
     end: "2022-07-15",
-    summary:
-      "Worked on web development projects using modern technologies; Gained exposure to backend programming with Node.js; Learned database management and optimization techniques; Collaborated on real client projects.",
+    summary: "Worked on web apps with Node.js backend and database integration",
   },
 ];
 

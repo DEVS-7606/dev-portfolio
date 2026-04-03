@@ -3,6 +3,8 @@ import Hero from "@/components/organisms/Hero";
 import About from "@/components/organisms/About";
 import Experience from "@/components/organisms/Experience";
 import Education from "@/components/organisms/Education";
+import Projects from "@/components/organisms/Projects";
+import Achievements from "@/components/organisms/Achievements";
 // import Contact from "@/components/organisms/Contact";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 // import { DatabaseTest } from "@/components/DatabaseTest";
@@ -25,14 +27,9 @@ function App() {
 
         <Education />
 
-        <section id="projects" className="scroll-mt-24 py-8 sm:py-10 md:py-12">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight">
-            Projects
-          </h2>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base leading-7 text-zinc-700 dark:text-zinc-300">
-            We&apos;ll add your projects here next.
-          </p>
-        </section>
+        <Projects />
+
+        <Achievements />
 
         {/* <Contact /> */}
       </main>
