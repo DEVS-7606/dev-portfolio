@@ -8,9 +8,10 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
   { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
+  { label: "Projects", href: "#projects" },
+  { label: "Achievements", href: "#achievements" },
   { label: "Contact", href: "#contact" },
 ];
 

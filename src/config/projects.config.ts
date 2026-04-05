@@ -30,6 +30,17 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "CSS",
       "HTML",
     ],
+    projectLink: "https://view.com.au/",
+    imageUrl: "/images/projects/view-com-au.png",
+  },
+  {
+    title: "Weather Sphere",
+    company: null,
+    description:
+      "Built a responsive weather application that fetches and displays real-time weather data for user-searched locations. Integrated external REST APIs and handled asynchronous state updates, loading states, and error scenarios for a smooth UX. Designed reusable UI components with attention to responsiveness, clean layout, and fast interaction.",
+    techStack: ["React", "TypeScript", "Tailwind CSS"],
+    projectLink: "https://weather-sphere-one.vercel.app",
+    imageUrl: "/images/projects/weather-sphere.png",
   },
   {
     title: "KudosNotes",
@@ -43,11 +54,13 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "AI-Powered Development",
     ],
     projectLink: "https://kudosnotes.netlify.app/",
+    imageUrl: "/images/projects/kudosnotes.png",
   },
 ];
 
 export const PROJECT_COLOR_THEMES: Record<number, ProjectCardColors> = {
   0: { accent: "rgb(37 99 235)", soft: "rgba(37,99,235,0.10)" },
   1: { accent: "#4f46e5", soft: "rgba(79,70,229,0.10)" },
-  2: { accent: "#059669", soft: "rgba(5,150,105,0.10)" },
+  2: { accent: "#0ea5e9", soft: "rgba(14,165,233,0.10)" },
+  3: { accent: "#059669", soft: "rgba(5,150,105,0.10)" },
 };

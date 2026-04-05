@@ -7,16 +7,21 @@ interface ExperienceSectionProps {
 }
 
 export const ExperienceSection = ({ title, data }: ExperienceSectionProps) => (
-  <section id="experience" className="scroll-mt-24 py-8 sm:py-10 md:py-12">
-    <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-2">
-      {title}
-    </h2>
-    <div className="prose prose-zinc dark:prose-invert max-w-none mb-6 sm:mb-8">
-      <p className="text-sm sm:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-        Professional journey showcasing growth from intern to frontend
-        developer, with hands-on experience in modern web technologies and clean
-        code practices.
-      </p>
+  <section id="experience" className="scroll-mt-24 py-12 sm:py-16 md:py-20 border-t border-zinc-100 dark:border-zinc-800/50">
+    <div className="flex flex-col items-center mb-12 text-center md:items-start md:text-left">
+      <div className="text-[10px] font-bold uppercase tracking-wider text-accent mb-2">
+        Career
+      </div>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mb-4 text-primary">
+        {title}
+      </h2>
+      <div className="prose prose-zinc dark:prose-invert max-w-2xl">
+        <p className="text-base sm:text-lg leading-relaxed text-secondary">
+          Professional journey showcasing growth from intern to frontend
+          developer, with hands-on experience in modern web technologies and clean
+          code practices.
+        </p>
+      </div>
     </div>
     <ExperienceGrid data={data} />
   </section>

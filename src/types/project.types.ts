@@ -4,6 +4,7 @@ export interface ProjectItem {
   description: string;
   techStack: string[];
   projectLink?: string;
+  imageUrl?: string;
 }
 
 export interface ProjectCardColors {

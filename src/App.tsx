@@ -7,6 +7,7 @@ import Projects from "@/components/organisms/Projects";
 import Achievements from "@/components/organisms/Achievements";
 // import Contact from "@/components/organisms/Contact";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
+import Contact from "@/components/organisms/Contact";
 // import { DatabaseTest } from "@/components/DatabaseTest";
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
 
         <Achievements />
 
-        {/* <Contact /> */}
+        <Contact />
       </main>
     </div>
   );
