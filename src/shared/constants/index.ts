@@ -26,7 +26,7 @@ export const HERO_CONFIG = {
     },
     {
       label: "GitHub",
-      href: "https://github.com",
+      href: "https://github.com/DEVS-7606",
       iconType: "github",
     },
   ],
