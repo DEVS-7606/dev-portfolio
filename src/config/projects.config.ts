@@ -43,18 +43,20 @@ export const PROJECTS_DATA: ProjectItem[] = [
     imageUrl: "/images/projects/weather-sphere.png",
   },
   {
-    title: "KudosNotes",
+    title: "Dealer Invoice Manager",
     company: null,
     description:
-      "Developed a complete web application during a 36-hour AI Powered Development Hackathon at Avesta Technologies, emphasizing efficient use of AI-powered tools like Cursor with MCPs, SOPs, and rule-based workflows. Delivered with a team of 4, securing 2nd place.",
+      "Built a full-stack SaaS invoice management platform that auto-extracts invoice data from supplier emails using AI, tracks payment status in real-time, and sends overdue alerts automatically. Features a clean dashboard with vendor management, invoice tracking, and payment analytics.",
     techStack: [
       "React",
       "TypeScript",
       "Tailwind CSS",
-      "AI-Powered Development",
+      "Supabase",
+      "Node.js",
+      "PostgreSQL",
     ],
-    projectLink: "https://kudosnotes.netlify.app/",
-    imageUrl: "/images/projects/kudosnotes.png",
+    projectLink: "https://projects-nu-lemon.vercel.app",
+    imageUrl: "/images/projects/dealer-invoice.png",
   },
 ];
 
