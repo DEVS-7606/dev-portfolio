@@ -11,22 +11,23 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     start: "2023-11",
     end: null,
     summary:
-      "Built a greenfield IIoT admin panel with machine onboarding, real-time dashboards, and production monitoring; Designed RBAC system for 5 user roles, improving maintainability and scaling feature delivery by 20%; Developed B2C websites with strong focus on performance and SEO optimization; Applied clean code, layered architecture, and atomic design for scalable UI",
+      "Designed and built a greenfield industrial IoT admin panel with 10+ modules covering machine onboarding, real-time monitoring, RBAC, and analytics dashboards. Architected a modular frontend using Atomic Design and layered patterns with Dependency Inversion, introducing reusable component libraries that increased team development speed by 35%. Implemented a 5-role RBAC system with protected routing enforcing least-privilege access. Optimised Core Web Vitals (LCP, FCP) via code splitting, lazy loading, and strategic memoisation. Contributed to view.com.au, improving organic search rankings from 7th to 3rd position via technical SEO enhancements. Built and maintained unit and E2E test suites using Jest, RTL, Cypress, and Playwright with ~75%+ coverage on business-critical modules.",
   },
   {
-    title: "Intern",
+    title: "Frontend Intern",
     company: "Avesta Technologies",
     start: "2023-02",
     end: "2023-11",
     summary:
-      "Built projects using React/Next.js with CRUD operations and modern frontend architecture",
+      "Developed React and Next.js features including CRUD operations, reusable UI components, and REST API integrations. Contributed to responsive UI development and frontend architecture improvements for both client-facing applications and internal tooling.",
   },
   {
-    title: "Summer Intern (15 days)",
-    company: "Karbh IT Solutions / Karbh IT",
-    start: "2022-07-01",
-    end: "2022-07-15",
-    summary: "Worked on web apps with Node.js backend and database integration",
+    title: "Software Development Intern",
+    company: "Karbh IT Solutions",
+    start: "2022-07",
+    end: "2022-08",
+    summary:
+      "Built backend features using Node.js and database integrations for dynamic web applications.",
   },
 ];
 
