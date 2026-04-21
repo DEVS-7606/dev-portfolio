@@ -21,7 +21,7 @@ export const HERO_CONFIG = {
     },
     {
       label: "LinkedIn",
-      href: "https://linkedin.com/in/dev-shah",
+      href: "https://www.linkedin.com/in/dev-shah-63b92218b/",
       iconType: "linkedin",
     },
     {
