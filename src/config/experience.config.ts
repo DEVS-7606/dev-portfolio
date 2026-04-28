@@ -6,12 +6,12 @@ import type {
 
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
-    title: "Frontend Developer",
+    title: "Full-Stack Developer",
     company: "Avesta Technologies",
     start: "2023-11",
     end: null,
     summary:
-      "Designed and built a greenfield industrial IoT admin panel with 10+ modules covering machine onboarding, real-time monitoring, RBAC, and analytics dashboards. Architected a modular frontend using Atomic Design and layered patterns with Dependency Inversion, introducing reusable component libraries that increased team development speed by 35%. Implemented a 5-role RBAC system with protected routing enforcing least-privilege access. Optimised Core Web Vitals (LCP, FCP) via code splitting, lazy loading, and strategic memoisation. Contributed to view.com.au, improving organic search rankings from 7th to 3rd position via technical SEO enhancements. Built and maintained unit and E2E test suites using Jest, RTL, Cypress, and Playwright with ~75%+ coverage on business-critical modules.",
+      "Designed and built a greenfield industrial IoT admin platform with 10+ modules covering machine onboarding, real-time monitoring, RBAC workflows, and analytics dashboards — worked within a NATS-based event-driven architecture for live data delivery; Architected a modular frontend using Atomic Design and layered patterns, introducing reusable component libraries and scaffolding templates that increased team development speed by 35%; Implemented a 5-role RBAC system with protected routing and conditional UI rendering, enforcing least-privilege access across all platform views; Optimised Core Web Vitals (LCP, FCP) for data-heavy dashboards via code splitting, lazy loading, and strategic memoisation, reducing unnecessary re-renders on high-frequency update components; Contributed to view.com.au, improving organic search rankings from 7th to 3rd position via technical SEO enhancements including structured data, canonical tags, and server-side metadata generation; Built and maintained unit and E2E test suites (Jest, RTL, Cypress, Playwright) achieving ~75%+ coverage on business-critical modules, reducing regression escapes to QA; Enforced accessibility standards (WCAG 2.1, ARIA, semantic HTML) and configured GitHub Actions pipelines for automated linting, testing, and preview deployments; Collaborated in an Agile/Scrum environment with sprint planning, code reviews, and iterative feature delivery across cross-functional product teams",
   },
   {
     title: "Frontend Intern",
@@ -27,7 +27,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     start: "2022-07",
     end: "2022-08",
     summary:
-      "Built backend features using Node.js and database integrations for dynamic web applications.",
+      "Built backend features using Node.js and MySQL, writing queries manually to support dynamic data-driven web applications.",
   },
 ];
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { ResumeModal } from "@/shared/components";
 
 type NavItem = {
   label: string;
@@ -18,6 +19,7 @@ const NAV_ITEMS: NavItem[] = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -65,6 +67,15 @@ export default function Header() {
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-[var(--color-accent)] group-hover:w-full transition-all duration-300" />
             </a>
           ))}
+
+          {/* Resume Button */}
+          <button
+            type="button"
+            onClick={() => setResumeOpen(true)}
+            className="font-mono text-xs font-medium uppercase tracking-widest px-3 py-1.5 rounded border border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white transition-all duration-300"
+          >
+            Resume
+          </button>
         </nav>
 
         {/* Right Controls */}
@@ -126,8 +137,21 @@ export default function Header() {
               {item.label}
             </a>
           ))}
+
+          {/* Resume Button — Mobile */}
+          <button
+            type="button"
+            onClick={() => {
+              setResumeOpen(true);
+              setMobileOpen(false);
+            }}
+            className="py-3 font-mono text-xs font-medium uppercase tracking-widest text-[var(--color-accent)] hover:text-[var(--color-text-primary)] transition-colors duration-300"
+          >
+            Resume
+          </button>
         </nav>
       </div>
+      <ResumeModal isOpen={resumeOpen} onClose={() => setResumeOpen(false)} />
     </header>
   );
 }

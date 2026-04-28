@@ -46,8 +46,8 @@ export const ExperienceSection = ({ title, data }: ExperienceSectionProps) => {
             {title}
           </h2>
           <p className="text-lg sm:text-xl font-light leading-relaxed text-[var(--color-text-secondary)] max-w-2xl">
-            Professional journey showcasing growth from intern to frontend
-            developer, with hands-on experience in modern web technologies.
+            Professional journey showcasing growth from intern to full-stack
+            developer, with hands-on experience across modern web technologies.
           </p>
         </div>
 

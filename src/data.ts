@@ -22,7 +22,7 @@ import {
 } from "react-icons/si";
 
 export const aboutMe =
-  "Frontend\u2011focused Software Engineer with 2+ years of experience building B2C web applications and internal dashboards using React, Next.js, TypeScript, and Tailwind CSS. Skilled in REST API integration, RBAC\u2011based admin tools, and clean code practices (layered architecture). Expanding into full\u2011stack development with Node.js and PostgreSQL.";
+  "Full\u2011Stack Developer with 2+ years of professional experience building scalable, high\u2011performance product interfaces using React, Next.js, TypeScript, and Tailwind CSS. Over the past year, deliberately expanded into backend development — using SQL, Node.js, Express.js, and OpenSearch from the ground up, and shipping a full\u2011stack project end\u2011to\u2011end. Strong foundation in component architecture, Core Web Vitals, RBAC, and Agile delivery; actively growing toward full\u2011stack ownership.";
 
 export const skills = [
   { name: "HTML", icon: FaHtml5 },

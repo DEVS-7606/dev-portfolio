@@ -20,8 +20,11 @@ export const TimelineDot = ({
     />
     {isCurrent && (
       <div
-        className="absolute w-3 h-3 rounded-full animate-ping opacity-30"
-        style={{ backgroundColor: "var(--color-accent)" }}
+        className="absolute w-3 h-3 rounded-full"
+        style={{
+          backgroundColor: "var(--color-accent)",
+          animation: "timeline-blink 2s ease-in-out infinite",
+        }}
       />
     )}
   </div>
