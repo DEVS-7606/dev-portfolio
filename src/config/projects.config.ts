@@ -61,8 +61,8 @@ export const PROJECTS_DATA: ProjectItem[] = [
 ];
 
 export const PROJECT_COLOR_THEMES: Record<number, ProjectCardColors> = {
-  0: { accent: "rgb(37 99 235)", soft: "rgba(37,99,235,0.10)" },
-  1: { accent: "#4f46e5", soft: "rgba(79,70,229,0.10)" },
-  2: { accent: "#0ea5e9", soft: "rgba(14,165,233,0.10)" },
-  3: { accent: "#059669", soft: "rgba(5,150,105,0.10)" },
+  0: { accent: "#D71921", soft: "rgba(215,25,33,0.08)" },
+  1: { accent: "#888888", soft: "rgba(136,136,136,0.08)" },
+  2: { accent: "#555555", soft: "rgba(85,85,85,0.08)" },
+  3: { accent: "#D71921", soft: "rgba(215,25,33,0.08)" },
 };

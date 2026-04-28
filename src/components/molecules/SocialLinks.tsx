@@ -17,17 +17,11 @@ const ICON_MAP: Record<SocialLink["iconType"], ComponentType<LucideProps>> = {
 
 interface SocialLinksProps {
   className?: string;
-  animationDelay?: string;
 }
 
-export default function SocialLinks({
-  className = "",
-  animationDelay,
-}: SocialLinksProps) {
+export default function SocialLinks({ className = "" }: SocialLinksProps) {
   return (
-    <div
-      className={`flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-700 animate-fade-in ${animationDelay} pb-8 sm:pb-12 md:pb-24 ${className}`}
-    >
+    <div className={`flex items-center gap-5 ${className}`}>
       {HERO_CONFIG.socialLinks.map((social: SocialLink) => {
         const Icon = ICON_MAP[social.iconType];
 
@@ -36,16 +30,11 @@ export default function SocialLinks({
             key={social.label}
             href={social.href}
             target={social.href.startsWith("http") ? "_blank" : undefined}
-            rel={
-              social.href.startsWith("http") ? "noopener noreferrer" : undefined
-            }
+            rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
             aria-label={social.label}
-            className="transition-colors duration-300 hover:text-blue-600"
+            className="group flex items-center justify-center w-12 h-12 rounded-full border border-[var(--color-border)] hover:border-[var(--color-accent)] text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-all duration-300"
           >
-            <Icon
-              className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
-              aria-hidden="true"
-            />
+            <Icon className="h-5 w-5" aria-hidden="true" />
           </a>
         );
       })}

@@ -2,137 +2,185 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Variables for Theme */
+/* ─── Nothing-Inspired Design System ─── */
+
 @layer base {
   :root {
-    /* Light mode colors */
-    --color-bg-primary: 255 255 255;
-    --color-bg-secondary: 249 250 251;
-    --color-bg-tertiary: 243 244 246;
-    
-    --color-text-primary: 17 24 39;
-    --color-text-secondary: 75 85 99;
-    --color-text-tertiary: 107 114 128;
-    
-    --color-border: 229 231 235;
-    --color-border-hover: 209 213 219;
-    
-    --color-accent: 59 130 246;
-    --color-accent-hover: 37 99 235;
-    
-    --color-success: 34 197 94;
-    --color-warning: 251 146 60;
-    --color-error: 239 68 68;
-    
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    /* Light mode — inverted Nothing aesthetic */
+    --color-bg-primary: #FFFFFF;
+    --color-bg-secondary: #F8F8F8;
+    --color-bg-card: #FFFFFF;
+    --color-bg-card-hover: #F0F0F0;
+
+    --color-text-primary: #000000;
+    --color-text-secondary: #555555;
+    --color-text-tertiary: #888888;
+
+    --color-border: rgba(0, 0, 0, 0.08);
+    --color-border-hover: rgba(0, 0, 0, 0.15);
+
+    --color-accent: #D71921;
+    --color-accent-soft: rgba(215, 25, 33, 0.08);
+    --color-accent-hover: #FF2D36;
+
+    --color-dot-grid: rgba(0, 0, 0, 0.06);
+    --color-glyph: rgba(0, 0, 0, 0.04);
   }
 
   .dark {
-    /* Dark mode colors */
-    --color-bg-primary: 17 24 39;
-    --color-bg-secondary: 31 41 55;
-    --color-bg-tertiary: 55 65 81;
-    
-    --color-text-primary: 243 244 246;
-    --color-text-secondary: 209 213 219;
-    --color-text-tertiary: 156 163 175;
-    
-    --color-border: 55 65 81;
-    --color-border-hover: 75 85 99;
-    
-    --color-accent: 96 165 250;
-    --color-accent-hover: 59 130 246;
-    
-    --color-success: 74 222 128;
-    --color-warning: 251 191 36;
-    --color-error: 248 113 113;
-    
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+    /* Dark mode — True Nothing aesthetic */
+    --color-bg-primary: #000000;
+    --color-bg-secondary: #0A0A0A;
+    --color-bg-card: #0A0A0A;
+    --color-bg-card-hover: #141414;
+
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #888888;
+    --color-text-tertiary: #555555;
+
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-border-hover: rgba(255, 255, 255, 0.15);
+
+    --color-accent: #D71921;
+    --color-accent-soft: rgba(215, 25, 33, 0.10);
+    --color-accent-hover: #FF2D36;
+
+    --color-dot-grid: rgba(255, 255, 255, 0.04);
+    --color-glyph: rgba(255, 255, 255, 0.03);
   }
+}
+
+/* ─── Global Resets ─── */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html,
 body {
   height: 100%;
-}
-
-html {
-  scroll-behavior: smooth;
+  margin: 0;
 }
 
 body {
-  margin: 0;
-  background-color: rgb(var(--color-bg-primary));
-  color: rgb(var(--color-text-primary));
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Utility classes for theme colors */
+/* ─── Selection Style ─── */
+::selection {
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+}
+
+/* ─── Scrollbar — Nothing minimal ─── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-hover);
+  border-radius: 2px;
+}
+
+/* ─── Dot Grid Background Pattern ─── */
 @layer utilities {
-  .bg-primary {
-    background-color: rgb(var(--color-bg-primary));
+  .dot-grid-bg {
+    background-image: radial-gradient(circle, var(--color-dot-grid) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
-  
-  .bg-secondary {
-    background-color: rgb(var(--color-bg-secondary));
-  }
-  
-  .bg-tertiary {
-    background-color: rgb(var(--color-bg-tertiary));
-  }
-  
-  .text-primary {
-    color: rgb(var(--color-text-primary));
-  }
-  
-  .text-secondary {
-    color: rgb(var(--color-text-secondary));
-  }
-  
-  .text-tertiary {
-    color: rgb(var(--color-text-tertiary));
-  }
-  
-  .border-default {
-    border-color: rgb(var(--color-border));
-  }
-  
-  .border-hover {
-    border-color: rgb(var(--color-border-hover));
-  }
-  
-  .text-accent {
-    color: rgb(var(--color-accent));
-  }
-  
-  .bg-accent {
-    background-color: rgb(var(--color-accent));
-  }
-  
-  .hover-accent:hover {
-    color: rgb(var(--color-accent-hover));
+
+  .dot-grid-bg-lg {
+    background-image: radial-gradient(circle, var(--color-dot-grid) 1.5px, transparent 1.5px);
+    background-size: 40px 40px;
   }
 }
 
-/* Theme toggle button styles */
-.theme-toggle {
-  @apply fixed top-4 right-4 z-50 p-3 rounded-full;
-  @apply transition-all duration-300 ease-in-out;
-  @apply hover:scale-110 hover:shadow-lg;
-  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
-  background-color: rgb(var(--color-bg-secondary));
-  border: 1px solid rgb(var(--color-border));
-  color: rgb(var(--color-text-primary));
+/* ─── Scroll Reveal Animations ─── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.theme-toggle:hover {
-  color: rgb(var(--color-accent));
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.dark .theme-toggle {
-  @apply focus:ring-offset-gray-900;
+/* Staggered children */
+.scroll-reveal-children > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-children.revealed > *:nth-child(1) { transition-delay: 0.05s; }
+.scroll-reveal-children.revealed > *:nth-child(2) { transition-delay: 0.10s; }
+.scroll-reveal-children.revealed > *:nth-child(3) { transition-delay: 0.15s; }
+.scroll-reveal-children.revealed > *:nth-child(4) { transition-delay: 0.20s; }
+.scroll-reveal-children.revealed > *:nth-child(5) { transition-delay: 0.25s; }
+.scroll-reveal-children.revealed > *:nth-child(6) { transition-delay: 0.30s; }
+
+.scroll-reveal-children.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Glyph Decorative Line ─── */
+.glyph-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-accent) 20%,
+    var(--color-accent) 80%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+/* ─── Section Divider ─── */
+.section-divider {
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ─── Nothing-style Fade In ─── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes arrowFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-600 { animation-delay: 0.6s; }
+.animation-delay-800 { animation-delay: 0.8s; }
+
+.animate-arrow-float {
+  animation: arrowFloat 1.6s ease-in-out infinite;
 }

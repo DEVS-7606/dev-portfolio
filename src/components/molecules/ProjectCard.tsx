@@ -1,87 +1,101 @@
-import type { ProjectItem, ProjectCardColors } from "@/types/project.types";
-import { Text } from "@/components/atoms/Text";
+import type { ProjectItem } from "@/types/project.types";
 import { Icon } from "@/components/atoms/Icon";
 
 interface ProjectCardProps {
   project: ProjectItem;
-  colors: ProjectCardColors;
 }
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <div 
-      className="group flex flex-col h-full bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors duration-300 overflow-hidden shadow-sm hover:shadow-md"
-    >
-      {/* Media or Fallback Area */}
-      <div className="h-48 md:h-56 relative overflow-hidden bg-zinc-100 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+    <div className="group flex flex-col h-full rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] hover:border-[var(--color-accent)]/20 hover:bg-[var(--color-bg-card-hover)] transition-all duration-500 overflow-hidden">
+      {/* Media Area */}
+      <div className="h-52 md:h-60 relative overflow-hidden bg-[var(--color-bg-secondary)]">
         {project.imageUrl ? (
-          <img 
-            src={project.imageUrl} 
-            alt={`Preview of ${project.title}`} 
-            className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
+          <img
+            src={project.imageUrl}
+            alt={`Preview of ${project.title}`}
+            className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-zinc-50 dark:bg-zinc-900">
-             <Icon 
-               type="code" 
-               className="w-12 h-12 text-zinc-300 dark:text-zinc-700"
-             />
+          <div className="w-full h-full flex items-center justify-center dot-grid-bg">
+            <Icon
+              type="code"
+              className="w-12 h-12 text-[var(--color-text-tertiary)] opacity-30"
+            />
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
-        
+
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-card)] via-transparent to-transparent opacity-60 pointer-events-none" />
+
+        {/* Live badge */}
         {project.projectLink && (
-           <div className="absolute top-4 right-4">
-             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 dark:bg-zinc-900/95 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-[10px] font-bold uppercase tracking-wider shadow-sm">
-               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-               Live
-             </div>
-           </div>
+          <div className="absolute top-4 right-4">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-primary)]/90 backdrop-blur-sm border border-[var(--color-border)] font-mono text-[10px] font-semibold uppercase tracking-widest text-[var(--color-text-primary)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" />
+              Live
+            </div>
+          </div>
         )}
       </div>
 
       {/* Content */}
-      <div className="flex-1 p-6 flex flex-col">
-        <div className="mb-4">
-          <Text variant="heading" className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-            {project.title}
-          </Text>
-          {project.company && (
-            <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400 mt-1">
-              {project.company}
-            </p>
-          )}
-        </div>
+      <div className="relative flex-1 p-6 sm:p-8 flex flex-col overflow-hidden">
+        {/* Card background */}
+        <div className="absolute inset-0 dot-grid-bg opacity-15 pointer-events-none" />
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle at 80% 80%, rgba(215,25,33,0.05) 0%, transparent 60%)",
+          }}
+        />
 
-        <Text variant="body" className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6 flex-1">
-          {project.description.replace(/;/g, '. ')}
-        </Text>
-
-        <div className="mt-auto space-y-6">
-          {/* Tech Tags - Minimalist style */}
-          <div className="flex flex-wrap gap-2">
-            {project.techStack.map((tech) => (
-              <span
-                key={tech}
-                className="inline-flex items-center text-xs font-medium px-2.5 py-1.5 rounded-md border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 bg-zinc-50 dark:bg-zinc-800/50"
-              >
-                {tech}
-              </span>
-            ))}
+        <div className="relative flex-1 flex flex-col">
+          <div className="mb-4">
+            <h3 className="text-xl sm:text-2xl font-display font-bold text-[var(--color-text-primary)]">
+              {project.title}
+            </h3>
+            {project.company && (
+              <p className="mt-1 font-mono text-xs font-medium uppercase tracking-widest text-[var(--color-text-tertiary)]">
+                {project.company}
+              </p>
+            )}
           </div>
 
-          {/* Regular specific button */}
-          {project.projectLink && (
-            <a
-              href={project.projectLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 text-sm font-semibold transition-colors"
-            >
-              View Live Project
-              <Icon type="external" className="w-4 h-4" />
-            </a>
-          )}
+          <p className="text-base text-[var(--color-text-secondary)] font-light leading-relaxed mb-6 flex-1">
+            {project.description.replace(/;/g, ". ")}
+          </p>
+
+          <div className="mt-auto space-y-5">
+            {/* Tech Tags */}
+            <div className="flex flex-wrap gap-2">
+              {project.techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="font-mono text-xs font-medium px-3 py-1.5 rounded border border-[var(--color-border)] text-[var(--color-text-tertiary)] hover:border-[var(--color-accent)]/30 hover:text-[var(--color-accent)] transition-colors duration-300"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* CTA */}
+            {project.projectLink && (
+              <a
+                href={project.projectLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-mono text-sm font-semibold uppercase tracking-wider text-[var(--color-text-primary)] hover:text-[var(--color-accent)] transition-colors duration-300 group/link"
+              >
+                View Project
+                <Icon
+                  type="external"
+                  className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-300"
+                />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>

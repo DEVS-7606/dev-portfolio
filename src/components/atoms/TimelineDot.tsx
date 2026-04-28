@@ -9,20 +9,20 @@ export const TimelineDot = ({
   color,
   className = "",
 }: TimelineDotProps) => (
-  <div className={`relative ${className}`}>
+  <div className={`relative flex items-center justify-center ${className}`}>
     <div
-      className={`
-        w-4 h-4 rounded-full border-2 transition-all duration-300
-        ${
-          isCurrent
-            ? "bg-white border-zinc-900 dark:border-white shadow-lg"
-            : "bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-600"
-        }
-      `}
-      style={color ? { backgroundColor: color, borderColor: color } : undefined}
+      className={`w-3 h-3 rounded-full transition-all duration-500 ${
+        isCurrent
+          ? "bg-[var(--color-accent)]"
+          : "bg-[var(--color-text-tertiary)] opacity-30"
+      }`}
+      style={color ? { backgroundColor: color } : undefined}
     />
     {isCurrent && (
-      <div className="absolute inset-0 w-4 h-4 rounded-full bg-blue-500 animate-ping opacity-75" />
+      <div
+        className="absolute w-3 h-3 rounded-full animate-ping opacity-30"
+        style={{ backgroundColor: "var(--color-accent)" }}
+      />
     )}
   </div>
 );

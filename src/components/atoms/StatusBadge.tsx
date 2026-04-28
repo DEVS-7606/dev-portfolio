@@ -3,20 +3,19 @@ interface StatusBadgeProps {
   className?: string;
 }
 
-export const StatusBadge = ({ isCurrent, className = '' }: StatusBadgeProps) => (
-  <span 
-    className={`
-      inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full transition-all duration-300
-      ${isCurrent 
-        ? "bg-green-500/20 text-green-700 dark:text-green-400 ring-1 ring-green-500/30" 
-        : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
-      }
-      ${className}
-    `}
+export const StatusBadge = ({ isCurrent, className = "" }: StatusBadgeProps) => (
+  <span
+    className={`inline-flex items-center gap-1.5 font-mono text-[10px] font-medium uppercase tracking-wider px-2.5 py-1 rounded-full border transition-all duration-300 ${
+      isCurrent
+        ? "border-[var(--color-accent)]/30 text-[var(--color-accent)] bg-[var(--color-accent-soft)]"
+        : "border-[var(--color-border)] text-[var(--color-text-tertiary)]"
+    } ${className}`}
   >
-    <span className={`w-1.5 h-1.5 rounded-full ${
-      isCurrent ? "bg-green-500 animate-pulse" : "bg-current"
-    }`} />
-    {isCurrent ? "Currently Working" : "Completed"}
+    <span
+      className={`w-1 h-1 rounded-full ${
+        isCurrent ? "bg-[var(--color-accent)] animate-pulse" : "bg-current opacity-50"
+      }`}
+    />
+    {isCurrent ? "Active" : "Completed"}
   </span>
 );

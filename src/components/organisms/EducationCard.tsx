@@ -1,17 +1,5 @@
-import { CardHeader } from "@/components/molecules/CardHeader";
-import { ScoreDisplay } from "@/components/molecules/ScoreDisplay";
-import { AchievementItem } from "@/components/molecules/AchievementItem";
 import { Icon } from "@/components/atoms/Icon";
-import { Text } from "@/components/atoms/Text";
-import {
-  getCardColors,
-  isMainCard,
-  getGridLayout,
-  getCardLabel,
-  getDisplayScore,
-  getScoreLabel,
-} from "@/utils/education.utils";
-import type { EducationItem, CardColors } from "@/types/education.types";
+import type { EducationItem } from "@/types/education.types";
 
 interface EducationCardProps {
   education: EducationItem;
@@ -19,155 +7,121 @@ interface EducationCardProps {
 }
 
 export const EducationCard = ({ education, index }: EducationCardProps) => {
-  const colors = getCardColors(index);
-  const isMain = isMainCard(index);
-  const gridLayout = getGridLayout(index);
-  const label = getCardLabel(index);
-  const scoreValue = getDisplayScore(education.gpa, education.percentage);
-  const scoreLabel = getScoreLabel(education.gpa);
+  const isMain = index === 0;
+  const scoreValue = education.gpa ?? education.percentage ?? "";
+  const scoreLabel = education.gpa ? "GPA" : "Score";
 
   return (
     <div
-      className={`
-        group relative transition-all duration-700 ease-out
-        ${gridLayout}
-        hover:-translate-y-2
-      `}
+      className={`group relative transition-all duration-700 ease-out hover:-translate-y-1 ${
+        isMain ? "md:col-span-2 md:row-span-2" : ""
+      }`}
     >
-      {/* Glow Effect */}
+      {/* Glow Effect on hover */}
       <div
-        className="absolute -inset-1 rounded-xl sm:rounded-2xl lg:rounded-[2rem] opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl"
+        className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl pointer-events-none"
         style={{
-          background: `${colors.accent}40`,
+          background: "rgba(215, 25, 33, 0.15)",
         }}
       />
 
       {/* Card Container */}
-      <div
-        className="relative rounded-xl sm:rounded-2xl lg:rounded-[2rem] overflow-hidden h-full shadow-[0_4px_20px_rgba(0,0,0,0.08),0_1px_3px_rgba(0,0,0,0.1)]"
-      >
-        <CardBackground colors={colors} />
-        <CardBorder colors={colors} />
-        <HoverShadow colors={colors} />
+      <div className="relative rounded-xl overflow-hidden h-full border border-[var(--color-border)] group-hover:border-[var(--color-accent)]/30 transition-all duration-500">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-[var(--color-bg-card)]" />
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+          style={{
+            background:
+              "radial-gradient(circle at 20% 0%, rgba(215,25,33,0.06) 0%, transparent 60%)",
+          }}
+        />
+
+        {/* Dot grid subtle pattern */}
+        <div className="absolute inset-0 dot-grid-bg opacity-30" />
+
+        {/* Hover shadow */}
+        <div
+          className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+          style={{
+            boxShadow:
+              "0 20px 40px rgba(215,25,33,0.08), 0 10px 20px rgba(215,25,33,0.05)",
+          }}
+        />
 
         {/* Content */}
-        <div
-          className={`relative p-4 sm:p-5 md:p-6 lg:p-8 md:h-full flex flex-col`}
-        >
-          <CardHeader
-            isMain={isMain}
-            colors={colors}
-            period={education.period}
-            label={label}
-          />
+        <div className="relative p-6 sm:p-8 flex flex-col h-full">
+          {/* Top accent line */}
+          <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
 
-          <CardTitle
-            isMain={isMain}
-            colors={colors}
-            degree={education.degree}
-            institution={education.institution}
-          />
-
-          {scoreValue && (
-            <ScoreDisplay
-              colors={colors}
-              value={scoreValue}
-              label={scoreLabel}
-              note={education.gpaNote}
+          {/* Icon */}
+          <div className="flex items-center justify-center w-12 h-12 rounded-full border border-[var(--color-border)] group-hover:border-[var(--color-accent)]/30 transition-colors duration-300 mb-5">
+            <Icon
+              type={isMain ? "graduation" : "book"}
+              className="w-5 h-5 text-[var(--color-text-tertiary)] group-hover:text-[var(--color-accent)] transition-colors duration-300"
             />
+          </div>
+
+          {/* Period */}
+          <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-[var(--color-text-tertiary)]">
+            {education.period}
+          </span>
+
+          {/* Degree */}
+          <h3
+            className={`mt-3 font-display font-bold text-[var(--color-text-primary)] leading-tight ${
+              isMain ? "text-2xl sm:text-3xl lg:text-4xl" : "text-lg sm:text-xl"
+            }`}
+          >
+            {education.degree}
+          </h3>
+
+          {/* Institution */}
+          <p className="mt-2 font-mono text-sm text-[var(--color-text-tertiary)] uppercase tracking-wider">
+            {education.institution}
+          </p>
+
+          {/* Spacer */}
+          <div className="flex-1" />
+
+          {/* Score */}
+          {scoreValue && (
+            <div className="mt-6 pt-5 border-t border-[var(--color-border)]">
+              <div className="flex items-baseline gap-2">
+                <span
+                  className={`font-display font-bold text-[var(--color-accent)] ${
+                    isMain ? "text-5xl lg:text-6xl" : "text-3xl"
+                  }`}
+                >
+                  {scoreValue}
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-tertiary)]">
+                  {scoreLabel}
+                </span>
+              </div>
+              {education.gpaNote && (
+                <p className="mt-1 font-mono text-[10px] text-[var(--color-text-tertiary)] opacity-60">
+                  {education.gpaNote}
+                </p>
+              )}
+            </div>
           )}
 
+          {/* Achievements */}
           {education.achievements && (
-            <AchievementsList achievements={education.achievements} colors={colors} />
+            <div className="mt-5 pt-5 border-t border-[var(--color-border)] space-y-2">
+              {education.achievements.map((achievement, idx) => (
+                <div key={idx} className="flex items-start gap-2">
+                  <span className="w-1 h-1 rounded-full bg-[var(--color-accent)] mt-2 flex-shrink-0 opacity-60" />
+                  <p className="text-sm text-[var(--color-text-secondary)] font-light leading-relaxed">
+                    {achievement}
+                  </p>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </div>
     </div>
   );
 };
-
-// Private Sub-Components
-const CardBackground = ({
-  colors,
-}: {
-  colors: CardColors;
-}) => (
-  <div className="absolute inset-0">
-    <div className="absolute inset-0 bg-white dark:bg-zinc-900" />
-    <div
-      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-      style={{
-        background: `radial-gradient(circle at 20% 0%, ${colors.accent}12 0%, transparent 60%)`,
-      }}
-    />
-  </div>
-);
-
-const CardBorder = ({
-  colors,
-}: {
-  colors: CardColors;
-}) => (
-  <div
-    className="absolute inset-0 rounded-xl sm:rounded-2xl lg:rounded-[2rem] pointer-events-none transition-all duration-500 ring-2 ring-inset group-hover:ring-[3px]"
-    style={{
-      ringColor: colors.accent + "30",
-      boxShadow: `inset 0 1px 2px rgba(255,255,255,0.5)`,
-    } as React.CSSProperties}
-  />
-);
-
-const HoverShadow = ({ colors }: { colors: CardColors }) => (
-  <div
-    className="absolute inset-0 rounded-xl sm:rounded-2xl lg:rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-    style={{
-      boxShadow: `0 20px 40px ${colors.accent}20, 0 10px 20px ${colors.accent}15`,
-    }}
-  />
-);
-
-const CardTitle = ({
-  isMain,
-  colors,
-  degree,
-  institution,
-}: {
-  isMain: boolean;
-  colors: CardColors;
-  degree: string;
-  institution: string;
-}) => (
-  <>
-    <Text
-      variant="heading"
-      className={`mb-2 transition-all duration-300 ${isMain
-        ? "text-2xl sm:text-3xl lg:text-4xl"
-        : "text-xl sm:text-2xl lg:text-3xl"
-        } text-zinc-900 dark:text-zinc-100`}
-      color={colors.accent}
-    >
-      {degree}
-    </Text>
-
-    <div
-      className="flex items-center gap-2 text-sm sm:text-base font-semibold mb-auto text-zinc-600 dark:text-zinc-400"
-    >
-      <Icon type="building" className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-      {institution}
-    </div>
-  </>
-);
-
-const AchievementsList = ({
-  achievements,
-  colors
-}: {
-  achievements: string[],
-  colors: CardColors
-}) => (
-  <div className="space-y-2 sm:space-y-2.5 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-zinc-200 dark:border-zinc-800">
-    {achievements.map((achievement, index) => (
-      <AchievementItem key={index} colors={colors}>{achievement}</AchievementItem>
-    ))}
-  </div>
-);

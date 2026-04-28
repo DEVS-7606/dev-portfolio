@@ -32,9 +32,9 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 ];
 
 export const EXPERIENCE_COLOR_THEMES: Record<number, ExperienceCardColors> = {
-  0: { accent: ACCENT_COLOR, soft: "rgba(37,99,235,0.10)" },
-  1: { accent: "#4f46e5", soft: "rgba(79,70,229,0.10)" },
-  2: { accent: "#059669", soft: "rgba(5,150,105,0.10)" },
+  0: { accent: ACCENT_COLOR, soft: "rgba(215,25,33,0.08)" },
+  1: { accent: "#888888", soft: "rgba(136,136,136,0.08)" },
+  2: { accent: "#555555", soft: "rgba(85,85,85,0.08)" },
 };
 
 export const EXPERIENCE_GRID_LAYOUTS = {
