@@ -5,14 +5,14 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
-/** Read a CSS color var (#rrggbb) as a 0xRRGGBB number for Vanta. */
-function cssVarToHex(name: string, fallback: number) {
-  const raw = getComputedStyle(document.documentElement)
-    .getPropertyValue(name)
-    .trim();
-  const m = /^#([0-9a-f]{6})$/i.exec(raw);
-  return m ? Number.parseInt(m[1], 16) : fallback;
-}
+// Colours are keyed off the `theme` value, not read from the page's CSS: when
+// the theme toggles, this effect re-runs *before* ThemeProvider updates the
+// `.dark` class, so reading CSS variables here returned the previous theme's
+// colours (inverted background, washed-out grey). Keep in sync with index.css.
+const TRUNK_THEME = {
+  dark: { background: 0x000000, accent: 0xd71921, opacity: "opacity-30" },
+  light: { background: 0xffffff, accent: 0xd71921, opacity: "opacity-40" },
+} as const;
 
 /**
  * Vanta "Trunk" (concentric tree-ring lines) as one fixed background behind
@@ -34,8 +34,7 @@ export default function VantaTrunk() {
     return () => reduced.removeEventListener("change", update);
   }, []);
 
-  // (Re)create the effect when enabled or when the theme changes, so the
-  // colours are re-read from the CSS variables of the active theme.
+  // (Re)create the effect when enabled or when the theme changes.
   useEffect(() => {
     const el = elRef.current;
     if (!enabled || !el) return;
@@ -50,8 +49,8 @@ export default function VantaTrunk() {
       minWidth: 200,
       scale: 1,
       scaleMobile: 1,
-      color: cssVarToHex("--color-accent", 0xd71921),
-      backgroundColor: cssVarToHex("--color-bg-primary", 0x000000),
+      color: TRUNK_THEME[theme].accent,
+      backgroundColor: TRUNK_THEME[theme].background,
       spacing: 0,
       chaos: 1,
     });
@@ -78,7 +77,7 @@ export default function VantaTrunk() {
     <div
       ref={elRef}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-0 opacity-30"
+      className={`pointer-events-none fixed inset-0 z-0 ${TRUNK_THEME[theme].opacity}`}
     />
   );
 }
