@@ -1,3 +1,4 @@
+import SectionBlock from "@/components/atoms/SectionBlock";
 import { useContactForm } from "@/hooks/useContactForm";
 import { InputField } from "@/shared/components/InputField";
 import { TextareaField } from "@/shared/components/TextareaField";
@@ -15,6 +16,7 @@ export default function Contact() {
       ref={sectionRef}
       className="relative scroll-mt-24 scroll-reveal border-t border-[var(--color-border)] overflow-hidden"
     >
+      <SectionBlock />
       {/* Section background decoration */}
       <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
         <div

@@ -1,3 +1,4 @@
+import SectionBlock from "@/components/atoms/SectionBlock";
 import { ACHIEVEMENTS_DATA } from "@/config/achievements.config";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -10,6 +11,7 @@ export default function Achievements() {
       ref={sectionRef}
       className="relative scroll-mt-24 scroll-reveal border-t border-[var(--color-border)] overflow-hidden"
     >
+      <SectionBlock />
       {/* Section background decoration */}
       <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
         <div

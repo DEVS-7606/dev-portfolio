@@ -1,3 +1,4 @@
+import SectionBlock from "@/components/atoms/SectionBlock";
 import { EducationGrid } from "@/components/organisms/EducationGrid";
 import type { EducationItem } from "@/types/education.types";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -16,6 +17,7 @@ export const EducationSection = ({ title, data }: EducationSectionProps) => {
       ref={sectionRef}
       className="relative scroll-mt-24 scroll-reveal border-t border-[var(--color-border)] overflow-hidden"
     >
+      <SectionBlock />
       {/* Section background decoration */}
       <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
         <div

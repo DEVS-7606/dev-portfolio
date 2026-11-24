@@ -24,9 +24,9 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"Space Grotesk"', "system-ui", "sans-serif"],
-        mono: ['"JetBrains Mono"', '"Fira Code"', "monospace"],
-        body: ['"Space Grotesk"', "system-ui", "sans-serif"],
+        display: ['"Space Grotesk Variable"', "system-ui", "sans-serif"],
+        mono: ['"JetBrains Mono Variable"', '"Fira Code"', "monospace"],
+        body: ['"Space Grotesk Variable"', "system-ui", "sans-serif"],
       },
       animation: {
         reveal: "reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards",

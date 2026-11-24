@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
+import TrunkThumb from "@/components/atoms/TrunkThumb";
 
 const RESUME_PDF_PATH = "/Dev_Resume_FS.pdf";
 
@@ -20,6 +21,9 @@ const NAV_ITEMS: NavItem[] = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  // True while the hero fills the screen: the logo slot shows the Trunk
+  // thumbnail instead of the name.
+  const [atHero, setAtHero] = useState(true);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -33,7 +37,13 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+      const hero = document.getElementById("hero");
+      const heroHeight = hero?.offsetHeight ?? window.innerHeight;
+      setAtHero(window.scrollY < heroHeight * 0.5);
+    };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -42,7 +52,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[var(--color-bg-primary)]/90 backdrop-blur-md border-b border-[var(--color-border)]"
+          ? "bg-[var(--color-bg-primary)]/95 border-b border-[var(--color-border)]"
           : "bg-transparent"
       }`}
     >
@@ -50,9 +60,24 @@ export default function Header() {
         {/* Logo / Name */}
         <a
           href="#hero"
-          className="font-mono text-sm font-semibold tracking-widest uppercase text-[var(--color-text-primary)] hover:text-[var(--color-accent)] transition-colors duration-300"
+          aria-label="Dev Shah, back to top"
+          className="grid items-center font-mono text-sm font-semibold tracking-widest uppercase text-[var(--color-text-primary)] hover:text-[var(--color-accent)] transition-colors duration-300"
         >
-          Dev Shah
+          <span
+            className={`col-start-1 row-start-1 transition-all duration-500 ${
+              atHero ? "-translate-y-2 opacity-0" : "translate-y-0 opacity-100"
+            }`}
+          >
+            Dev Shah
+          </span>
+          <span
+            aria-hidden="true"
+            className={`col-start-1 row-start-1 justify-self-start transition-all duration-500 ${
+              atHero ? "scale-100 opacity-100" : "scale-75 opacity-0"
+            }`}
+          >
+            <TrunkThumb size={40} active={atHero} />
+          </span>
         </a>
 
         {/* Desktop Nav */}
@@ -127,7 +152,7 @@ export default function Header() {
           mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="flex flex-col px-6 pb-6 pt-2 bg-[var(--color-bg-primary)]/95 backdrop-blur-md border-b border-[var(--color-border)]">
+        <nav className="flex flex-col px-6 pb-6 pt-2 bg-[var(--color-bg-primary)]/95 border-b border-[var(--color-border)]">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}

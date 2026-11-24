@@ -1,5 +1,3 @@
-import { supabase } from "@/supabase-client";
-
 export type ContactMessagePayload = {
     name: string;
     contactNumber: string;
@@ -18,11 +16,13 @@ export const ContactService = {
             email: data.email,
             purpose: data.purpose,
         };
-        console.log(submissionData);
+        // Load the Supabase client only when the form is submitted, so its
+        // ~100 kB isn't part of the initial page load.
+        const { supabase } = await import("@/supabase-client");
         const { error } = await supabase.from("users").insert(submissionData);
 
         if (error) {
-            console.log(error);
+            console.error("Contact form submission failed:", error.message);
             throw error;
         }
     },
