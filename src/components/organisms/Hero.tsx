@@ -32,9 +32,9 @@ export default function Hero() {
 
         {/* Tagline */}
         <p className="mt-8 max-w-lg text-base sm:text-lg font-body font-light text-[var(--color-text-secondary)] leading-relaxed animate-fade-in animation-delay-400">
-          Building modern web experiences with React, TypeScript
+          Full-stack engineer shipping production apps with React, FastAPI
           <br className="hidden sm:block" />
-          &amp; clean code practices.
+          &amp; PostgreSQL, from database to UI.
         </p>
 
         {/* Decorative line */}
