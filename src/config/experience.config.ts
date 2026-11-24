@@ -6,12 +6,20 @@ import type {
 
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
+    title: "Full-Stack Engineer",
+    company: "Movya",
+    start: "2026-06",
+    end: null,
+    summary:
+      "Built Smart Proposal, a sales proposal app for client Divya Bhaskar, now used by 468 employees who created 933 proposals worth INR 67.6 Cr in the first 3 months, using React, FastAPI, and PostgreSQL; Made discount approvals faster, with 42% of proposals approved automatically and the rest approved in about 1 hour, by building an approval flow for 18 sales roles that checks discount limits and profit margins; Kept the app fast for all users, with most requests answered in under 0.1 seconds, by adding Redis caching, background logging, and role-based access control; Let sales teams skip manual design work, generating 1,675 proposal documents and 1,728 AI ad designs automatically, by building PDF generation and AI ad pipelines with Playwright and n8n",
+  },
+  {
     title: "Full-Stack Developer",
     company: "Avesta Technologies",
     start: "2023-11",
-    end: null,
+    end: "2026-05",
     summary:
-      "Designed and built a greenfield industrial IoT admin platform with 10+ modules covering machine onboarding, real-time monitoring, RBAC workflows, and analytics dashboards — worked within a NATS-based event-driven architecture for live data delivery; Architected a modular frontend using Atomic Design and layered patterns, introducing reusable component libraries and scaffolding templates that increased team development speed by 35%; Implemented a 5-role RBAC system with protected routing and conditional UI rendering, enforcing least-privilege access across all platform views; Optimised Core Web Vitals (LCP, FCP) for data-heavy dashboards via code splitting, lazy loading, and strategic memoisation, reducing unnecessary re-renders on high-frequency update components; Contributed to view.com.au, improving organic search rankings from 7th to 3rd position via technical SEO enhancements including structured data, canonical tags, and server-side metadata generation; Built and maintained unit and E2E test suites (Jest, RTL, Cypress, Playwright) achieving ~75%+ coverage on business-critical modules, reducing regression escapes to QA; Enforced accessibility standards (WCAG 2.1, ARIA, semantic HTML) and configured GitHub Actions pipelines for automated linting, testing, and preview deployments; Collaborated in an Agile/Scrum environment with sprint planning, code reviews, and iterative feature delivery across cross-functional product teams",
+      "Built a greenfield IoT admin platform with 10+ modules and 5-role RBAC on a NATS event-driven architecture; Increased team development speed by 35% by introducing Atomic Design component libraries and scaffolding templates; Improved view.com.au search ranking from 7th to 3rd through structured data, canonical tags, and SSR metadata; Reached ~75% test coverage on critical modules with Jest, RTL, Cypress, and Playwright, wired into GitHub Actions CI",
   },
   {
     title: "Frontend Intern",
@@ -19,7 +27,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     start: "2023-02",
     end: "2023-11",
     summary:
-      "Developed React and Next.js features including CRUD operations, reusable UI components, and REST API integrations. Contributed to responsive UI development and frontend architecture improvements for both client-facing applications and internal tooling.",
+      "Built React and Next.js features, reusable components, and REST API integrations for client and internal apps.",
   },
   {
     title: "Software Development Intern",
@@ -27,7 +35,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     start: "2022-07",
     end: "2022-08",
     summary:
-      "Built backend features using Node.js and MySQL, writing queries manually to support dynamic data-driven web applications.",
+      "Built backend features with Node.js and MySQL for data-driven web applications.",
   },
 ];
 
@@ -35,6 +43,7 @@ export const EXPERIENCE_COLOR_THEMES: Record<number, ExperienceCardColors> = {
   0: { accent: ACCENT_COLOR, soft: "rgba(215,25,33,0.08)" },
   1: { accent: "#888888", soft: "rgba(136,136,136,0.08)" },
   2: { accent: "#555555", soft: "rgba(85,85,85,0.08)" },
+  3: { accent: "#555555", soft: "rgba(85,85,85,0.08)" },
 };
 
 export const EXPERIENCE_GRID_LAYOUTS = {
