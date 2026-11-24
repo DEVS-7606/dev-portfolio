@@ -62,7 +62,7 @@ export default function HeroBackground() {
                 x={symbol.x}
                 y={symbol.y}
                 fill="var(--color-accent)"
-                fontFamily="'JetBrains Mono', monospace"
+                fontFamily="'JetBrains Mono Variable', monospace"
                 fontSize={symbol.fontSize}
                 transform={`rotate(${symbol.rotation})`}
                 opacity="0.25"

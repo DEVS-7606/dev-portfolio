@@ -1,3 +1,4 @@
+import SectionBlock from "@/components/atoms/SectionBlock";
 import { ExperienceGrid } from "@/components/organisms/ExperienceGrid";
 import type { ExperienceItem } from "@/types/experience.types";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -16,6 +17,7 @@ export const ExperienceSection = ({ title, data }: ExperienceSectionProps) => {
       ref={sectionRef}
       className="relative scroll-mt-24 scroll-reveal border-t border-[var(--color-border)] overflow-hidden"
     >
+      <SectionBlock />
       {/* Section background decoration */}
       <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
         <div

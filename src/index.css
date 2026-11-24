@@ -53,9 +53,29 @@
 /* ─── Global Resets ─── */
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior is handled by Lenis (lenis.css) — don't set it here */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+ * Anchor landing position. Lenis honors scroll-margin-top, and every section
+ * has top padding (py-24 / sm:py-32 / md:py-40) before its heading. A margin of
+ * (header + breathing room) - padding lands the section label ~112px below the
+ * viewport top, just under the fixed header, instead of leaving a big gap.
+ */
+section[id]:not(#hero) {
+  scroll-margin-top: 1rem; /* 112px - 96px padding */
+}
+@media (min-width: 640px) {
+  section[id]:not(#hero) {
+    scroll-margin-top: -1rem; /* 112px - 128px padding */
+  }
+}
+@media (min-width: 768px) {
+  section[id]:not(#hero) {
+    scroll-margin-top: -3rem; /* 112px - 160px padding */
+  }
 }
 
 html,
@@ -65,7 +85,7 @@ body {
 }
 
 body {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: "Space Grotesk Variable", system-ui, sans-serif;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   transition: background-color 0.4s ease, color 0.4s ease;

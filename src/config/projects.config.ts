@@ -45,7 +45,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "HTML",
     ],
     projectLink: "https://view.com.au/",
-    imageUrl: "/images/projects/view-com-au.png",
+    imageUrl: "/images/projects/view-com-au.webp",
   },
   {
     title: "Weather Sphere",
@@ -54,7 +54,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Built a responsive weather app with real-time third-party API integration, client-side caching, and 3D globe visualisation using Three.js.",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Three.js"],
     projectLink: "https://weather-sphere-one.vercel.app",
-    imageUrl: "/images/projects/weather-sphere.png",
+    imageUrl: "/images/projects/weather-sphere.webp",
   },
   {
     title: "Dealers Invoice",
@@ -72,7 +72,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "shadcn/ui",
     ],
     projectLink: "https://projects-nu-lemon.vercel.app",
-    imageUrl: "/images/projects/dealer-invoice.png",
+    imageUrl: "/images/projects/dealer-invoice.webp",
   },
 ];
 

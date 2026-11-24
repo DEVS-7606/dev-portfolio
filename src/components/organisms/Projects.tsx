@@ -1,3 +1,4 @@
+import SectionBlock from "@/components/atoms/SectionBlock";
 import { PROJECTS_DATA } from "@/config/projects.config";
 import { ProjectCard } from "@/components/molecules/ProjectCard";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -11,6 +12,7 @@ export default function Projects() {
       ref={sectionRef}
       className="relative scroll-mt-24 scroll-reveal border-t border-[var(--color-border)] overflow-hidden"
     >
+      <SectionBlock />
       {/* Section background decoration */}
       <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
         <div
