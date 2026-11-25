@@ -50,11 +50,18 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        ? "border-b border-[var(--color-border)] backdrop-blur-md"
+        : "bg-transparent"
+        }`}
+      style={
         scrolled
-          ? "bg-[var(--color-bg-primary)]/95 border-b border-[var(--color-border)]"
-          : "bg-transparent"
-      }`}
+          ? {
+            backgroundColor:
+              "color-mix(in srgb, var(--color-bg-primary) 20%, transparent)",
+          }
+          : undefined
+      }
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-12">
         {/* Logo / Name */}
@@ -64,17 +71,15 @@ export default function Header() {
           className="grid items-center font-mono text-sm font-semibold tracking-widest uppercase text-[var(--color-text-primary)] hover:text-[var(--color-accent)] transition-colors duration-300"
         >
           <span
-            className={`col-start-1 row-start-1 transition-all duration-500 ${
-              atHero ? "-translate-y-2 opacity-0" : "translate-y-0 opacity-100"
-            }`}
+            className={`col-start-1 row-start-1 transition-all duration-500 ${atHero ? "-translate-y-2 opacity-0" : "translate-y-0 opacity-100"
+              }`}
           >
             Dev Shah
           </span>
           <span
             aria-hidden="true"
-            className={`col-start-1 row-start-1 justify-self-start transition-all duration-500 ${
-              atHero ? "scale-100 opacity-100" : "scale-75 opacity-0"
-            }`}
+            className={`col-start-1 row-start-1 justify-self-start transition-all duration-500 ${atHero ? "scale-100 opacity-100" : "scale-75 opacity-0"
+              }`}
           >
             <TrunkThumb size={40} active={atHero} />
           </span>
@@ -114,11 +119,10 @@ export default function Header() {
             aria-label="Toggle theme"
           >
             <div
-              className={`w-3 h-3 rounded-full transition-all duration-500 ${
-                theme === "dark"
-                  ? "bg-[var(--color-text-primary)] scale-100"
-                  : "bg-[var(--color-accent)] scale-75"
-              }`}
+              className={`w-3 h-3 rounded-full transition-all duration-500 ${theme === "dark"
+                ? "bg-[var(--color-text-primary)] scale-100"
+                : "bg-[var(--color-accent)] scale-75"
+                }`}
             />
           </button>
 
@@ -132,14 +136,12 @@ export default function Header() {
           >
             <div className="flex flex-col items-center justify-center gap-1">
               <span
-                className={`block w-3 h-px bg-[var(--color-text-primary)] transition-all duration-300 ${
-                  mobileOpen ? "rotate-45 translate-y-[3px]" : ""
-                }`}
+                className={`block w-3 h-px bg-[var(--color-text-primary)] transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-[3px]" : ""
+                  }`}
               />
               <span
-                className={`block w-3 h-px bg-[var(--color-text-primary)] transition-all duration-300 ${
-                  mobileOpen ? "-rotate-45 -translate-y-[2px]" : ""
-                }`}
+                className={`block w-3 h-px bg-[var(--color-text-primary)] transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-[2px]" : ""
+                  }`}
               />
             </div>
           </button>
@@ -148,9 +150,8 @@ export default function Header() {
 
       {/* Mobile Nav */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ease-out ${
-          mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`md:hidden overflow-hidden transition-all duration-500 ease-out ${mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
       >
         <nav className="flex flex-col px-6 pb-6 pt-2 bg-[var(--color-bg-primary)]/95 border-b border-[var(--color-border)]">
           {NAV_ITEMS.map((item) => (

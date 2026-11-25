@@ -56,7 +56,7 @@ const About = () => {
           ref={skillsRef}
           className="scroll-reveal scroll-reveal-children mt-20 sm:mt-28"
         >
-          <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-tertiary)] mb-10">
+          <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-secondary)] mb-10">
             Technologies
           </h3>
 
@@ -68,10 +68,10 @@ const About = () => {
                   key={skill.name}
                   className="group flex flex-col items-center gap-3 cursor-default"
                 >
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full border border-[var(--color-border)] group-hover:border-[var(--color-accent)] text-[var(--color-text-tertiary)] group-hover:text-[var(--color-accent)] transition-all duration-300">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full border border-[var(--color-border-hover)] group-hover:border-[var(--color-accent)] text-[var(--color-text-secondary)] group-hover:text-[var(--color-accent)] transition-all duration-300">
                     <Icon className="text-3xl" />
                   </div>
-                  <span className="font-mono text-[10px] font-medium uppercase tracking-wider text-[var(--color-text-tertiary)] group-hover:text-[var(--color-text-primary)] transition-colors duration-300 text-center">
+                  <span className="font-mono text-[10px] font-medium uppercase tracking-wider text-[var(--color-text-secondary)] group-hover:text-[var(--color-text-primary)] transition-colors duration-300 text-center">
                     {skill.name}
                   </span>
                 </div>
