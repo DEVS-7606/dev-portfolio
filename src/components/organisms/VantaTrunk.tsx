@@ -77,7 +77,13 @@ export default function VantaTrunk() {
     <div
       ref={elRef}
       aria-hidden="true"
-      className={`pointer-events-none fixed inset-0 z-0 ${TRUNK_THEME[theme].opacity}`}
+      // Fixed *large* viewport height (lvh), not `inset-0`. On phones the URL
+      // bar collapses while scrolling, which changes the visual viewport height
+      // and fires `resize`; Vanta then calls p5.resizeCanvas() and the rings
+      // visibly shift. lvh doesn't change with the URL bar, so no resize
+      // happens. `h-screen` is the fallback for browsers without lvh support.
+      className={`pointer-events-none fixed left-0 top-0 z-0 h-screen w-full ${TRUNK_THEME[theme].opacity}`}
+      style={{ height: "100lvh" }}
     />
   );
 }

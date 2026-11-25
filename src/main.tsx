@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ReactLenis
       root
-      options={{ lerp: 0.1, anchors: true, autoRaf: true }}
+      options={{ lerp: 0.04, anchors: true, autoRaf: true }}
     />
     <ThemeProvider>
       <App />

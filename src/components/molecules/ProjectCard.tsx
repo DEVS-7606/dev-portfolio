@@ -8,9 +8,9 @@ interface ProjectCardProps {
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <div className="group flex flex-col h-full rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] hover:border-[var(--color-accent)]/20 hover:bg-[var(--color-bg-card-hover)] transition-all duration-500 overflow-hidden">
-      {/* Media Area */}
-      <div className="h-52 md:h-60 relative overflow-hidden bg-[var(--color-bg-secondary)]">
-        {project.imageUrl ? (
+      {/* Media Area — only rendered when the project has an image */}
+      {project.imageUrl && (
+        <div className="h-52 md:h-60 relative overflow-hidden bg-[var(--color-bg-secondary)]">
           <img
             src={project.imageUrl}
             alt={`Preview of ${project.title}`}
@@ -18,28 +18,21 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
             decoding="async"
             className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700"
           />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center dot-grid-bg">
-            <Icon
-              type="code"
-              className="w-12 h-12 text-[var(--color-text-tertiary)] opacity-30"
-            />
-          </div>
-        )}
 
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-card)] via-transparent to-transparent opacity-60 pointer-events-none" />
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-card)] via-transparent to-transparent opacity-60 pointer-events-none" />
 
-        {/* Live badge */}
-        {project.projectLink && (
-          <div className="absolute top-4 right-4">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-primary)]/90 backdrop-blur-sm border border-[var(--color-border)] font-mono text-[10px] font-semibold uppercase tracking-widest text-[var(--color-text-primary)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" />
-              Live
+          {/* Live badge */}
+          {project.projectLink && (
+            <div className="absolute top-4 right-4">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-primary)]/90 backdrop-blur-sm border border-[var(--color-border)] font-mono text-[10px] font-semibold uppercase tracking-widest text-[var(--color-text-primary)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" />
+                Live
+              </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
 
       {/* Content */}
       <div className="relative flex-1 p-6 sm:p-8 flex flex-col overflow-hidden">

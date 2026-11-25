@@ -47,7 +47,11 @@ export default function Achievements() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          className={`grid grid-cols-1 gap-6 ${
+            ACHIEVEMENTS_DATA.length > 1 ? "md:grid-cols-2 lg:grid-cols-3" : ""
+          }`}
+        >
           {ACHIEVEMENTS_DATA.map((item, index) => (
             <div
               key={index}
@@ -67,21 +71,24 @@ export default function Achievements() {
 
               {/* Content */}
               <div className="relative">
-                {/* Trophy icon */}
-                <div className="flex items-center justify-center w-12 h-12 rounded-full border border-[var(--color-accent)]/20 bg-[var(--color-accent-soft)] mb-5">
-                  <span className="text-base text-[var(--color-accent)]">✦</span>
+                <div className="flex items-center gap-4 mb-4">
+                  {/* Trophy icon */}
+                  <div className="flex items-center justify-center shrink-0 w-12 h-12 rounded-full border border-[var(--color-accent)]/20 bg-[var(--color-accent-soft)]">
+                    <span className="text-base text-[var(--color-accent)]">✦</span>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-display font-bold text-[var(--color-accent)] mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="font-mono text-xs font-medium uppercase tracking-widest text-[var(--color-text-tertiary)]">
+                      {item.organization}
+                    </p>
+                  </div>
                 </div>
 
-                <h3 className="text-xl font-display font-bold text-[var(--color-accent)] mb-1">
-                  {item.title}
-                </h3>
-
-                <p className="font-mono text-xs font-medium uppercase tracking-widest text-[var(--color-text-tertiary)] mb-4">
-                  {item.organization}
-                </p>
-
                 <div className="pt-4 border-t border-[var(--color-border)]">
-                  <p className="text-base text-[var(--color-text-secondary)] font-light leading-relaxed">
+                  <p className="text-base text-[var(--color-text-secondary)] font-light leading-relaxed max-w-4xl">
                     {item.description}
                   </p>
                 </div>

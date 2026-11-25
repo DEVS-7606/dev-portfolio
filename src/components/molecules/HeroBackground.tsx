@@ -96,16 +96,6 @@ export default function HeroBackground() {
         aria-hidden="true"
       />
 
-      {/* Bottom fade into next section */}
-      <div
-        className="absolute -z-10 bottom-0 left-0 right-0 h-32 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to top, var(--color-bg-primary), transparent)",
-        }}
-        aria-hidden="true"
-      />
-
       {/* Decorative glyph lines */}
       <div
         className="absolute -z-10 top-1/2 right-0 w-px h-40 bg-gradient-to-b from-transparent via-[var(--color-accent)] to-transparent opacity-20"

@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
+import { useLenis } from "lenis/react";
 import { useTheme } from "@/contexts/ThemeContext";
 import TrunkThumb from "@/components/atoms/TrunkThumb";
+
+// Keep in sync with the duration-300 classes on the header / mobile panel.
+const MENU_ANIM_MS = 300;
 
 const RESUME_PDF_PATH = "/Dev_Resume_FS.pdf";
 
@@ -25,6 +29,28 @@ export default function Header() {
   // thumbnail instead of the name.
   const [atHero, setAtHero] = useState(true);
   const { theme, toggleTheme } = useTheme();
+  const lenis = useLenis();
+
+  // Mobile menu links: collapse the menu first, then start the page scroll
+  // once it is mostly folded, so the two animations run in sequence instead of
+  // fighting (Lenis' default anchor jump would start scrolling immediately).
+  const onMobileNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    const target = document.querySelector<HTMLElement>(href);
+    if (!target || !lenis) {
+      setMobileOpen(false);
+      return;
+    }
+    e.preventDefault();
+    e.stopPropagation(); // keep Lenis' own anchor click handler out of it
+    setMobileOpen(false);
+    window.setTimeout(
+      () => lenis.scrollTo(target, { duration: 1.7 }),
+      MENU_ANIM_MS * 0.6,
+    );
+  };
 
   useEffect(() => {
     const onResize = () => {
@@ -35,6 +61,19 @@ export default function Header() {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
+
+  // Fold the mobile menu away when the page is scrolled behind it. The existing
+  // max-height/opacity transition on the panel makes it collapse smoothly. A
+  // small threshold ignores tiny jitter (e.g. the address bar resizing).
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const startY = window.scrollY;
+    const onScrollClose = () => {
+      if (Math.abs(window.scrollY - startY) > 8) setMobileOpen(false);
+    };
+    window.addEventListener("scroll", onScrollClose, { passive: true });
+    return () => window.removeEventListener("scroll", onScrollClose);
+  }, [mobileOpen]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -50,11 +89,21 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[var(--color-bg-primary)]/95 border-b border-[var(--color-border)]"
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color] duration-300 ease-out ${
+        scrolled || mobileOpen
+          ? "border-b border-[var(--color-border)] backdrop-blur-md"
           : "bg-transparent"
       }`}
+      style={
+        scrolled || mobileOpen
+          ? {
+              // Open mobile menu: near-solid so the links stay readable.
+              backgroundColor: `color-mix(in srgb, var(--color-bg-primary) ${
+                mobileOpen ? 95 : 20
+              }%, transparent)`,
+            }
+          : undefined
+      }
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-12">
         {/* Logo / Name */}
@@ -126,7 +175,9 @@ export default function Header() {
           <button
             type="button"
             className="flex items-center justify-center w-8 h-8 rounded-full border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-colors duration-300 md:hidden"
-            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={
+              mobileOpen ? "Close navigation menu" : "Open navigation menu"
+            }
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((v) => !v)}
           >
@@ -148,33 +199,39 @@ export default function Header() {
 
       {/* Mobile Nav */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ease-out ${
-          mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+          mobileOpen
+            ? "grid-rows-[1fr] opacity-100"
+            : "grid-rows-[0fr] opacity-0"
         }`}
+        aria-hidden={!mobileOpen}
+        inert={!mobileOpen}
       >
-        <nav className="flex flex-col px-6 pb-6 pt-2 bg-[var(--color-bg-primary)]/95 border-b border-[var(--color-border)]">
-          {NAV_ITEMS.map((item) => (
+        <div className="min-h-0 overflow-hidden">
+          <nav className="flex flex-col px-6 pb-6 pt-2 border-b border-[var(--color-border)]">
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="py-3 font-mono text-xs font-medium uppercase tracking-widest text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] border-b border-[var(--color-border)] last:border-b-0 transition-colors duration-300"
+                onClick={(e) => onMobileNavClick(e, item.href)}
+              >
+                {item.label}
+              </a>
+            ))}
+
+            {/* Resume Link — Mobile */}
             <a
-              key={item.href}
-              href={item.href}
-              className="py-3 font-mono text-xs font-medium uppercase tracking-widest text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] border-b border-[var(--color-border)] last:border-b-0 transition-colors duration-300"
+              href={RESUME_PDF_PATH}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-3 font-mono text-xs font-medium uppercase tracking-widest text-[var(--color-accent)] hover:text-[var(--color-text-primary)] transition-colors duration-300"
               onClick={() => setMobileOpen(false)}
             >
-              {item.label}
+              Resume
             </a>
-          ))}
-
-          {/* Resume Link — Mobile */}
-          <a
-            href={RESUME_PDF_PATH}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="py-3 font-mono text-xs font-medium uppercase tracking-widest text-[var(--color-accent)] hover:text-[var(--color-text-primary)] transition-colors duration-300"
-            onClick={() => setMobileOpen(false)}
-          >
-            Resume
-          </a>
-        </nav>
+          </nav>
+        </div>
       </div>
     </header>
   );
